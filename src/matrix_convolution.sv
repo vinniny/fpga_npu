@@ -40,7 +40,7 @@ module matrix_convolution (
             end else if (j < 3'd4) begin
                 j <= j + 3'd1; m <= 0; n <= 0;
             end else if (i < 4) begin
-                i <= i + 4'd1; j <= 0; m <= 0; n <= 0;
+                i <= i + 3'd1; j <= 0; m <= 0; n <= 0;
             end else begin
                 done <= 1; computing <= 0;
             end
