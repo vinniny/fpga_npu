@@ -1,0 +1,65 @@
+{
+ "Device" : "GW1NR-9C",
+ "Files" : [
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix _addition.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_subtraction.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_B.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_C.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/impl/temp/rtl_parser.result",
+ "Top" : "top",
+ "VerilogStd" : "sysv",
+ "VhdlStd" : "vhdl_93"
+}

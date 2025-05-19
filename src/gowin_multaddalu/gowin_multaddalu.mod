@@ -1,0 +1,35 @@
+-series GW1NR
+-device GW1NR-9
+-device_version C
+-package QFN88P
+-part_number GW1NR-LV9QN88PC6/I5
+
+
+-mod_name Gowin_MULTADDALU
+-file_name gowin_multaddalu
+-path C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/
+-type MULTADDALU
+-file_type vlg
+-multaddalu_mode 0
+-en_shiftout_a false
+-en_shiftout_b false
+-width_a0 18
+-width_b0 18
+-width_a1 18
+-width_b1 18
+-source_a0 parallel
+-source_a1 parallel
+-source_b0 parallel
+-source_b1 parallel
+-data_type_a0 signed
+-data_type_a1 signed
+-data_type_b0 signed
+-data_type_b1 signed
+-reset_mode sync
+-ina0_reg registered
+-inb0_reg registered
+-ina1_reg registered
+-inb1_reg registered
+-pipe0_reg bypass
+-pipe1_reg bypass
+-out_reg registered
