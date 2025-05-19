@@ -1,11 +1,11 @@
 module matrix_dot (
-    input clk, rst_n, start,
-    input [7:0] a [0:31],
-    input [7:0] b [0:31],
+    input logic clk, rst_n, start,
+    input logic [7:0] a [0:31],
+    input logic [7:0] b [0:31],
     output logic [15:0] c,
     output logic done
 );
-    logic [5:0] i;
+    logic [6:0] i; // Widened to 7 bits
     logic computing;
     logic [17:0] dsp_a0, dsp_b0;
     logic [36:0] dsp_out;
@@ -28,14 +28,16 @@ module matrix_dot (
             dsp_a0 <= 0; dsp_b0 <= 0;
         end else if (start && !computing) begin
             computing <= 1;
+            i <= 0;
         end else if (computing) begin
-            dsp_a0 <= {10'd0, a[i]} & 18'h3FFFF;
-            dsp_b0 <= {10'd0, b[i]} & 18'h3FFFF;
+            dsp_a0 <= {10'd0, a[i]};
+            dsp_b0 <= {10'd0, b[i]};
             c <= dsp_out[15:0];
-            if (i < 6'd32) begin // Changed to 6-bit literal
-                i <= i + 4'd1;
+            if (i < 31) begin
+                i <= i + 1;
             end else begin
-                done <= 1; computing <= 0;
+                done <= 1;
+                computing <= 0;
             end
         end
     end

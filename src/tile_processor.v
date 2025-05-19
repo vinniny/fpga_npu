@@ -1,15 +1,15 @@
 module tile_processor (
-    input clk, rst_n, start,
-    input [2:0] tile_i, tile_j, // 8x8 tiles
-    input [2:0] op_code,
-    input [7:0] sram_A_dout, sram_B_dout,
+    input logic clk, rst_n, start,
+    input logic [2:0] tile_i, tile_j, // 8x8 tiles
+    input logic [2:0] op_code,
+    input logic [7:0] sram_A_dout, sram_B_dout,
     output logic tp_sram_A_we, tp_sram_B_we, tp_sram_C_we,
     output logic [9:0] tp_sram_A_addr, tp_sram_B_addr, tp_sram_C_addr,
     output logic [7:0] tp_sram_A_din, tp_sram_B_din, tp_sram_C_din,
     output logic done
 );
     parameter MUL = 3'd0, ADD = 3'd1, SUB = 3'd2, CONV = 3'd3, DOT = 3'd4;
-    typedef enum {IDLE, LOAD, COMPUTE, DONE} state_t;
+    typedef enum logic [1:0] {IDLE, LOAD, COMPUTE, DONE} state_t;
     state_t state;
     logic [7:0] a_tile [0:3][0:31], b_tile [0:31][0:3];
     logic [7:0] add_a [0:3][0:3], add_b [0:3][0:3];
@@ -18,7 +18,7 @@ module tile_processor (
     logic [15:0] mul_result [0:3][0:3], add_result [0:3][0:3], sub_result [0:3][0:3], conv_result [0:3][0:3];
     logic [15:0] dot_result, final_result [0:3][0:3];
     logic mul_done, add_done, sub_done, conv_done, dot_done, op_done;
-    logic [5:0] i, j, k;
+    logic [6:0] i, j, k; // Widened to 7 bits
 
     matrix_multiplier mul_inst (
         .clk(clk), .rst_n(rst_n), .start(op_code == MUL && state == COMPUTE),
@@ -106,12 +106,12 @@ module tile_processor (
                         MUL: begin
                             tp_sram_A_addr <= ((tile_i * 128) + (i * 32) + k) % 1024;
                             tp_sram_B_addr <= ((k * 8) + (tile_j * 2) + j) % 1024;
-                            if (i < 3'd4 && k < 6'd32) begin
+                            if (i < 4 && k < 32) begin
                                 a_tile[i][k] <= sram_A_dout;
                                 b_tile[k][j] <= sram_B_dout;
-                                k <= k + 3'd1;
-                            end else if (i < 3'd4) begin
-                                i <= i + 4'd1; k <= 0;
+                                k <= k + 1;
+                            end else if (i < 4) begin
+                                i <= i + 1; k <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
@@ -119,12 +119,12 @@ module tile_processor (
                         ADD, SUB: begin
                             tp_sram_A_addr <= ((tile_i * 128) + (i * 4) + j) % 1024;
                             tp_sram_B_addr <= ((tile_i * 128) + (i * 4) + j) % 1024;
-                            if (i < 3'd4 && j < 3'd4) begin
+                            if (i < 4 && j < 4) begin
                                 add_a[i][j] <= sram_A_dout;
                                 add_b[i][j] <= sram_B_dout;
-                                j <= j + 3'd1;
-                            end else if (i < 3'd4) begin
-                                i <= i + 4'd1; j <= 0;
+                                j <= j + 1;
+                            end else if (i < 4) begin
+                                i <= i + 1; j <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
@@ -132,13 +132,13 @@ module tile_processor (
                         CONV: begin
                             tp_sram_A_addr <= ((tile_i * 128) + (i * 6) + j) % 1024;
                             tp_sram_B_addr <= ((tile_i * 128) + (i * 3) + j) % 1024;
-                            if (i < 3'd6 && j < 3'd6) begin
+                            if (i < 6 && j < 6) begin
                                 conv_input[i][j] <= sram_A_dout;
-                                if (i < 3'd3 && j < 3'd3)
+                                if (i < 3 && j < 3)
                                     conv_kernel[i][j] <= sram_B_dout;
-                                j <= j + 3'd1;
-                            end else if (i < 3'd6) begin
-                                i <= i + 4'd1; j <= 0;
+                                j <= j + 1;
+                            end else if (i < 6) begin
+                                i <= i + 1; j <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
@@ -146,10 +146,10 @@ module tile_processor (
                         DOT: begin
                             tp_sram_A_addr <= ((tile_i * 32) + k) % 1024;
                             tp_sram_B_addr <= ((tile_j * 32) + k) % 1024;
-                            if (k < 6'd32) begin
+                            if (k < 32) begin
                                 dot_a[k] <= sram_A_dout;
                                 dot_b[k] <= sram_B_dout;
-                                k <= k + 3'd1;
+                                k <= k + 1;
                             end else begin
                                 state <= COMPUTE;
                             end
@@ -165,11 +165,11 @@ module tile_processor (
                     if (op_code == DOT) begin
                         tp_sram_C_din <= dot_result[7:0];
                         done <= 1; state <= IDLE;
-                    end else if (i < 3'd4 && j < 3'd4) begin
+                    end else if (i < 4 && j < 4) begin
                         tp_sram_C_din <= final_result[i][j][7:0];
-                        j <= j + 3'd1;
-                    end else if (i < 3'd4) begin
-                        i <= i + 4'd1; j <= 0;
+                        j <= j + 1;
+                    end else if (i < 4) begin
+                        i <= i + 1; j <= 0;
                     end else begin
                         done <= 1; state <= IDLE;
                     end

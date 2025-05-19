@@ -1,11 +1,11 @@
 module spi_slave (
-    input sclk, mosi, cs_n, clk, rst_n,
-    output miso,
+    input logic sclk, mosi, cs_n, clk, rst_n,
+    output logic miso,
     output logic [7:0] cmd,
     output logic [2:0] tile_i, tile_j, // 8x8 tiles
     output logic [2:0] op_code,
     output logic [7:0] data_in,
-    input [7:0] data_out,
+    input logic [7:0] data_out,
     output logic valid
 );
     logic [23:0] shift_reg;
@@ -16,7 +16,7 @@ module spi_slave (
             bit_cnt <= 0; valid <= 0;
         end else begin
             shift_reg <= {shift_reg[22:0], mosi};
-            bit_cnt <= (bit_cnt + 1) & 5'h1F; // Mask to 5 bits (0-31)
+            bit_cnt <= (bit_cnt + 1) & 5'h1F;
             if (bit_cnt == 23) begin
                 cmd <= shift_reg[23:16];
                 tile_i <= shift_reg[15:13];

@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv",
-    "InstLine" : 5,
+    "InstLine" : 12,
     "InstName" : "npu_inst",
     "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv",
     "ModuleLine" : 1,
@@ -65,8 +65,128 @@
         "SubInsts" : [
          {
           "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
-          "InstLine" : 13,
-          "InstName" : "dsp_inst",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[3].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[3].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[3].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[3].dsp_inst",
           "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
           "ModuleLine" : 10,
           "ModuleName" : "Gowin_MULTADDALU"
@@ -99,8 +219,128 @@
         "SubInsts" : [
          {
           "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
-          "InstLine" : 13,
-          "InstName" : "dsp_inst",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[0].gen_y[3].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[1].gen_y[3].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[2].gen_y[3].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[0].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[1].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[2].dsp_inst",
+          "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
+          "ModuleLine" : 10,
+          "ModuleName" : "Gowin_MULTADDALU"
+         },
+         {
+          "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
+          "InstLine" : 18,
+          "InstName" : "gen_x[3].gen_y[3].dsp_inst",
           "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
           "ModuleLine" : 10,
           "ModuleName" : "Gowin_MULTADDALU"

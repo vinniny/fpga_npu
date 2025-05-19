@@ -1,6 +1,6 @@
 module top_npu_system (
-    input clk, rst_n, sclk, mosi, cs_n,
-    output miso, done
+    input logic clk, rst_n, sclk, mosi, cs_n,
+    output logic miso, done
 );
     logic [7:0] cmd;
     logic [2:0] tile_i, tile_j;
@@ -85,7 +85,6 @@ module top_npu_system (
             sram_A_din <= 0;
             sram_B_din <= 0;
         end else begin
-            // Prioritize SPI writes over tile processor operations
             sram_A_we <= (spi_sram_A_we) ? spi_sram_A_we : tp_sram_A_we;
             sram_B_we <= (spi_sram_B_we) ? spi_sram_B_we : tp_sram_B_we;
             sram_A_addr <= (spi_sram_A_we) ? spi_sram_A_addr : tp_sram_A_addr;
