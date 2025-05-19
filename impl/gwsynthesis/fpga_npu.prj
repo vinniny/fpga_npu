@@ -11,12 +11,12 @@
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_multiplier.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.v" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_A.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_B.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_C.sv" type="verilog"/>
+        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.v" type="verilog"/>
+        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv" type="verilog"/>
+        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

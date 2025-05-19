@@ -5,7 +5,7 @@ module matrix_dot (
     output logic [15:0] c,
     output logic done
 );
-    logic [5:0] i;
+    logic [6:0] i; // Widened to 7 bits
     logic computing;
     logic [17:0] dsp_a0, dsp_b0;
     logic [36:0] dsp_out;
@@ -32,7 +32,7 @@ module matrix_dot (
             dsp_a0 <= {10'd0, a[i]};
             dsp_b0 <= {10'd0, b[i]};
             c <= dsp_out[15:0];
-            if (i < 6'd32) begin // Changed to 6-bit literal
+            if (i < 32) begin
                 i <= i + 1;
             end else begin
                 done <= 1; computing <= 0;
