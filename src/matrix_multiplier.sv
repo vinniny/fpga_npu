@@ -5,8 +5,7 @@ module matrix_multiplier (
     output logic [15:0] c [0:3][0:3],
     output logic done
 );
-    logic [3:0] i; // Widened to 4 bits
-    logic [2:0] j, k;
+    logic [2:0] i, j, k;
     logic computing;
     logic [17:0] dsp_a0, dsp_b0;
     logic [36:0] dsp_out;
@@ -33,15 +32,15 @@ module matrix_multiplier (
         end else if (start && !computing) begin
             computing <= 1;
         end else if (computing) begin
-            dsp_a0 <= {10'd0, a[i][k]};
-            dsp_b0 <= {10'd0, b[k][j]};
+            dsp_a0 <= {10'd0, a[i][k]} & 18'h3FFFF;
+            dsp_b0 <= {10'd0, b[k][j]} & 18'h3FFFF;
             c[i][j] <= dsp_out[15:0];
             if (k < 32) begin
-                k <= k + 1;
+                k <= k + 3'd1;
             end else if (j < 3'd4) begin
-                j <= j + 1; k <= 0;
-            end else if (i < 4) begin
-                i <= i + 1; j <= 0; k <= 0;
+                j <= j + 3'd1; k <= 0;
+            end else if (i < 3'd4) begin // Changed to 3-bit literal
+                i <= i + 4'd1; j <= 0; k <= 0;
             end else begin
                 done <= 1; computing <= 0;
             end

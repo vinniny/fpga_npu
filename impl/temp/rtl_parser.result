@@ -65,7 +65,7 @@
         "SubInsts" : [
          {
           "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
-          "InstLine" : 14,
+          "InstLine" : 13,
           "InstName" : "dsp_inst",
           "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
           "ModuleLine" : 10,
@@ -99,7 +99,7 @@
         "SubInsts" : [
          {
           "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
-          "InstLine" : 14,
+          "InstLine" : 13,
           "InstName" : "dsp_inst",
           "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
           "ModuleLine" : 10,
