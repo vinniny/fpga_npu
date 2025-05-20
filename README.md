@@ -1,44 +1,98 @@
+# Multi-FPGA Neural Processing Unit (NPU) on Sipeed Tang Nano 9K
 
-# Multi-FPGA Neural Processing Unit (NPU) Architecture
+## Overview
 
-This project implements a **Neural Processing Unit (NPU)** distributed across **four Tang Nano 9K FPGAs** (GW1NR-LV9QN88PC6/I5), coordinated by an **Intel DE10-Nano host platform**. Each FPGA operates as an independent matrix processing tile, designed to execute core neural network operations such as **matrix multiplication, convolution, addition, subtraction, and dot product** on **32×32 matrices** with **8-bit input precision**.
+This project implements a Neural Processing Unit (NPU) on the Sipeed Tang Nano 9K (Gowin GW1NR-9C FPGA) for matrix operations, including multiplication, convolution, addition, subtraction, and dot product. Designed for a multi-FPGA system, it achieves \~0.384 GMAC/s per FPGA at 50 MHz (\~1.536 GMAC/s across 4 FPGAs) with a 16×16 matrix size and 4x4 tiling strategy.
 
-## 📌 Key Features
+## Features
 
-- **Multi-FPGA Parallelism**: Each FPGA executes a portion of the NPU workload, supporting modular expansion and concurrent computation.
-- **Supported Operations**:
-  - Matrix Multiplication (32×32)
-  - 2D Convolution (3×3 kernel)
-  - Element-wise Addition & Subtraction
-  - Dot Product of matrix rows
-- **Data Precision**:
-  - Inputs: 8-bit
-  - Outputs: 16-bit
-  - Accumulators: 24-bit (ensuring full dynamic range without overflow)
-- **SRAM Architecture**:
-  - Three 8 Kb SRAMs per FPGA (sram_A, sram_B, sram_C)
-  - Efficient access and buffering of matrix data
-- **Communication Interface**:
-  - SPI Slave implementation for interfacing with the DE10-Nano host
-  - Compact protocol for data upload/download and control signaling
+- **FPGA**: Gowin GW1NR-9C (8,640 LUTs, 5 DSP blocks, 468 Kb BRAM, 71 GPIOs).
+- **Matrix Size**: 16×16 (512 MACs for multiplication, 144 MACs for 3×3 convolution).
+- **Precision**: 8-bit inputs, 16-bit outputs, 24-bit accumulators.
+- **Memory**: 3 SRAMs (6 Kb, \~1.28% of 468 Kb).
+- **Clock**: 50 MHz (Fmax 56.811 MHz), with potential for 100 MHz (\~0.768 GMAC/s per FPGA).
+- **Operations**: Matrix multiplication, convolution, addition, subtraction, dot product.
+- **Resource Usage**: \~3,201 LUTs (41%), 2,757 registers (42%), 3 BSRAMs (12%), 5 DSPs.
 
-## ⚙️ Performance Target
+## Project Structure
 
-- Achieves up to **0.43 GMAC/s per FPGA** (total ~1.7 GMAC/s for full system) under pipelined and optimized conditions.
+- **Source Files**:
+  - `matrix_multiplier.sv`: Matrix multiplication (4x4 tiles, 5 DSPs).
+  - `matrix_convolution.sv`: 3×3 convolution (6x6 input tile, 5 DSPs).
+  - `matrix_addition.sv`, `matrix_subtraction.sv`: Element-wise operations.
+  - `matrix_dot.v`: Dot product (LUT-based).
+  - `tile_processor.v`: Orchestrates operations with SRAM access.
+  - `spi_slave.sv`: SPI interface for data transfer.
+  - `top.sv`, `top_npu_system.sv`: Top-level modules.
+  - `sram_A.sv`, `sram_B.sv`, `sram_C.sv`: SRAM modules.
+  - `gowin_multaddalu.v`: DSP primitive.
+- **Project File**: `fpga_npu.gprj`
+- **Constraints**: `fpga_npu.cst` (50 MHz clock, 5 DSPs max).
 
-## 🛠️ HDL Design
+## Setup Instructions
 
-- Implemented entirely in **SystemVerilog** (IEEE Std 1800-2017 compliant)
-- Synthesizable on Gowin Tang Nano 9K FPGAs
-- Modular tile-based architecture for scalability
+### Prerequisites
 
-## 📂 Repository Contents
+- **Hardware**: Sipeed Tang Nano 9K (GW1NR-LV9QN88PC6/I5).
+- **Software**: Gowin FPGA Designer v1.9.11.02 (64-bit).
+- **Tools**: Verilog/SystemVerilog simulator (e.g., ModelSim, Vivado Simulator).
 
-- `matrix_multiplier.sv` – Matrix multiplication core
-- `matrix_convolution.sv` – 2D convolution engine
-- `matrix_addition.sv`, `matrix_subtraction.sv` – Element-wise operators
-- `matrix_dot.v` – Dot product engine
-- `spi_slave.sv` – SPI interface logic
-- `tile_processor.v` – Local control and operation dispatcher
-- `top.sv` – Top-level per-FPGA wrapper
-- `top_npu_system.sv` – Multi-FPGA integration and host coordination
+### Installation
+
+1. **Clone Repository**:
+
+   ```bash
+   git clone <repository_url>
+   cd multi-fpga-npu
+   ```
+2. **Open Project**:
+   - Launch Gowin FPGA Designer.
+   - Open `fpga_npu.gprj`.
+   - Verify device: GW1NR-LV9QN88PC6/I5.
+3. **Add Constraints**:
+   - Include `fpga_npu.cst` in Project &gt; Constraints &gt; Add File.
+   - Contents:
+
+     ```verilog
+     create_clock -name clk -period 20 [get_ports clk] // 50 MHz
+     create_clock -name sclk -period 20 [get_ports sclk]
+     set_attribute -name MAX_DSP -value 5 -type integer
+     ```
+
+### Synthesis and Programming
+
+1. **Synthesize**:
+   - Run synthesis in Gowin FPGA Designer.
+   - Verify no warnings/errors (e.g., EX3791, RP0002, RP0006).
+   - Check resource usage: \~3,201 LUTs, 5 DSPs, 3 BSRAMs.
+2. **Program FPGA**:
+   - Generate bitstream.
+   - Program the Tang Nano 9K using Gowin Programmer.
+3. **Test**:
+   - Use SPI commands to input 16×16 matrices.
+   - Verify operations (multiplication, convolution, etc.) via outputs.
+
+## Achievements
+
+- **Resolved Errors**:
+  - **RP0006**: Reduced logic from 12,308 to \~3,201 LUTs by shrinking matrix size to 16×16 and optimizing tiling.
+  - **RP0002**: Limited DSPs to 5 using explicit instantiation and constraints.
+- **Eliminated Warnings**:
+  - Resolved all **EX3791** truncation warnings by adjusting bit-widths (`iter`, `m`, `n` to 3 bits; `i`, `j`, `k` to 5 bits) and explicit casting (e.g., `k <= 4'(k + 1)`).
+- **Performance**: Achieved \~0.384 GMAC/s at 50 MHz, with potential for \~0.768 GMAC/s at 100 MHz.
+- **Timing**: Meets 50 MHz (critical path \~17.928 ns, slack 2.398 ns, Fmax 56.811 MHz).
+
+## Future Steps
+
+- **100 MHz Optimization**: Implement PLL to achieve \~0.768 GMAC/s per FPGA (\~3.072 GMAC/s for 4 FPGAs).
+- **Hardware Testing**: Validate multi-FPGA coordination with real-world neural network workloads.
+- **Expand Operations**: Add support for additional layers (e.g., ReLU, pooling).
+- External Host: Using DE-10 or DE-2 with RISC-V softcore for the main host.
+
+## Acknowledgments
+
+- Built with Gowin FPGA Designer and Sipeed Tang Nano 9K.
+
+---
+
+*Last Updated: May 20, 2025*
