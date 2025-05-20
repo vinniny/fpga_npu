@@ -1,3 +1,4 @@
+(* use_dsp = "hard" *)
 module matrix_multiplier (
     input logic clk, rst_n, start,
     input logic [7:0] a [0:3][0:15],
@@ -8,8 +9,8 @@ module matrix_multiplier (
     output logic dsp_ce,
     output logic done
 );
-    logic [3:0] k;
-    logic [1:0] iter;
+    logic [3:0] k; // 0 to 15, 4 bits
+    logic [2:0] iter; // 0 to 3, 3 bits
     logic computing;
 
     always_ff @(posedge clk or negedge rst_n) begin
@@ -70,7 +71,8 @@ module matrix_multiplier (
             if (k < 15) begin
                 k <= k + 1;
             end else if (iter < 3) begin
-                iter <= iter + 1; k <= 0;
+                iter <= 3'(iter + 1); // Explicitly cast to 3 bits
+                k <= 0;
             end else begin
                 done <= 1;
                 computing <= 0;

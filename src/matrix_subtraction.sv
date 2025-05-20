@@ -1,11 +1,11 @@
 module matrix_subtraction (
     input logic clk, rst_n, start,
     input logic [7:0] a [0:3][0:3],
-    input logic [7:0] b [0:3][0:3], // Fixed 7:8 to 7:0
+    input logic [7:0] b [0:3][0:3],
     output logic [15:0] c [0:3][0:3],
     output logic done
 );
-    logic [4:0] i, j; // Widened to 5 bits
+    logic [2:0] i, j; // 0 to 3, 3 bits
     logic computing;
 
     always_ff @(posedge clk or negedge rst_n) begin
@@ -20,9 +20,10 @@ module matrix_subtraction (
         end else if (computing) begin
             if (i < 4 && j < 4) begin
                 c[i][j] <= a[i][j] - b[i][j];
-                j <= j + 1;
+                j <= 3'(j + 1); // Explicitly cast to 3 bits
             end else if (i < 4) begin
-                i <= i + 1; j <= 0;
+                i <= 3'(i + 1); // Explicitly cast to 3 bits
+                j <= 0;
             end else begin
                 done <= 1;
                 computing <= 0;

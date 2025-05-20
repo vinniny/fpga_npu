@@ -1,3 +1,4 @@
+(* use_dsp = "hard" *)
 module matrix_convolution (
     input logic clk, rst_n, start,
     input logic [7:0] input_tile [0:5][0:5],
@@ -8,8 +9,8 @@ module matrix_convolution (
     output logic dsp_ce,
     output logic done
 );
-    logic [4:0] m, n;
-    logic [1:0] iter;
+    logic [2:0] m, n; // 0 to 2, 3 bits
+    logic [2:0] iter; // 0 to 3, 3 bits
     logic computing;
 
     always_ff @(posedge clk or negedge rst_n) begin
@@ -69,12 +70,14 @@ module matrix_convolution (
             endcase
             if (m < 2 || (m == 2 && n < 2)) begin
                 if (n < 2) begin
-                    n <= n + 1;
+                    n <= 3'(n + 1); // Explicitly cast to 3 bits
                 end else begin
-                    m <= m + 1; n <= 0;
+                    m <= 3'(m + 1); // Explicitly cast to 3 bits
+                    n <= 0;
                 end
             end else if (iter < 3) begin
-                iter <= iter + 1; m <= 0; n <= 0;
+                iter <= 3'(iter + 1); // Explicitly cast to 3 bits
+                m <= 0; n <= 0;
             end else begin
                 done <= 1;
                 computing <= 0;

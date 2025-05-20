@@ -1,3 +1,4 @@
+(* MAX_DSP = 5 *)
 module tile_processor (
     input logic clk, rst_n, start,
     input logic [2:0] tile_i, tile_j,
@@ -18,7 +19,7 @@ module tile_processor (
     logic [15:0] mul_result [0:3][0:3], add_result [0:3][0:3], sub_result [0:3][0:3], conv_result [0:3][0:3];
     logic [15:0] dot_result, final_result [0:3][0:3];
     logic mul_done, add_done, sub_done, conv_done, dot_done, op_done;
-    logic [7:0] i, j, k;
+    logic [4:0] i, j, k; // 0 to 15 max, 5 bits
 
     // Shared DSP block (5 DSPs)
     logic [17:0] dsp_a0 [0:4], dsp_b0 [0:4];
@@ -160,52 +161,55 @@ module tile_processor (
                 LOAD: begin
                     case (op_code)
                         MUL: begin
-                            tp_sram_A_addr <= ((tile_i * 32) + (i * 16) + k) % 256;
-                            tp_sram_B_addr <= ((k * 4) + (tile_j * 1) + j) % 256;
+                            tp_sram_A_addr <= 10'((tile_i * 32) + (i * 16) + k); // Cast to 10 bits
+                            tp_sram_B_addr <= 10'((k * 4) + (tile_j * 1) + j); // Cast to 10 bits
                             if (i < 4 && k < 16) begin
                                 a_tile[i][k] <= sram_A_dout;
                                 b_tile[k][j] <= sram_B_dout;
-                                k <= k + 1;
+                                k <= 5'(k + 1); // Explicitly cast to 5 bits
                             end else if (i < 4) begin
-                                i <= i + 1; k <= 0;
+                                i <= 5'(i + 1); // Explicitly cast to 5 bits
+                                k <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
                         end
                         ADD, SUB: begin
-                            tp_sram_A_addr <= ((tile_i * 32) + (i * 4) + j) % 256;
-                            tp_sram_B_addr <= ((tile_i * 32) + (i * 4) + j) % 256;
+                            tp_sram_A_addr <= 10'((tile_i * 32) + (i * 4) + j); // Cast to 10 bits
+                            tp_sram_B_addr <= 10'((tile_i * 32) + (i * 4) + j); // Cast to 10 bits
                             if (i < 4 && j < 4) begin
                                 add_a[i][j] <= sram_A_dout;
                                 add_b[i][j] <= sram_B_dout;
-                                j <= j + 1;
+                                j <= 5'(j + 1); // Explicitly cast to 5 bits
                             end else if (i < 4) begin
-                                i <= i + 1; j <= 0;
+                                i <= 5'(i + 1); // Explicitly cast to 5 bits
+                                j <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
                         end
                         CONV: begin
-                            tp_sram_A_addr <= ((tile_i * 32) + (i * 6) + j) % 256;
-                            tp_sram_B_addr <= ((tile_i * 32) + (i * 3) + j) % 256;
+                            tp_sram_A_addr <= 10'((tile_i * 32) + (i * 6) + j); // Cast to 10 bits
+                            tp_sram_B_addr <= 10'((tile_i * 32) + (i * 3) + j); // Cast to 10 bits
                             if (i < 6 && j < 6) begin
                                 conv_input[i][j] <= sram_A_dout;
                                 if (i < 3 && j < 3)
                                     conv_kernel[i][j] <= sram_B_dout;
-                                j <= j + 1;
+                                j <= 5'(j + 1); // Explicitly cast to 5 bits
                             end else if (i < 6) begin
-                                i <= i + 1; j <= 0;
+                                i <= 5'(i + 1); // Explicitly cast to 5 bits
+                                j <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
                         end
                         DOT: begin
-                            tp_sram_A_addr <= ((tile_i * 16) + k) % 256;
-                            tp_sram_B_addr <= ((tile_j * 16) + k) % 256;
+                            tp_sram_A_addr <= 10'((tile_i * 16) + k); // Cast to 10 bits
+                            tp_sram_B_addr <= 10'((tile_j * 16) + k); // Cast to 10 bits
                             if (k < 16) begin
                                 dot_a[k] <= sram_A_dout;
                                 dot_b[k] <= sram_B_dout;
-                                k <= k + 1;
+                                k <= 5'(k + 1); // Explicitly cast to 5 bits
                             end else begin
                                 state <= COMPUTE;
                             end
@@ -216,16 +220,17 @@ module tile_processor (
                     state <= DONE; i <= 0; j <= 0;
                 end
                 DONE: begin
-                    tp_sram_C_addr <= ((tile_i * 32) + (i * 4) + j) % 256;
+                    tp_sram_C_addr <= 10'((tile_i * 32) + (i * 4) + j); // Cast to 10 bits
                     tp_sram_C_we <= 1;
                     if (op_code == DOT) begin
                         tp_sram_C_din <= dot_result[7:0];
                         done <= 1; state <= IDLE;
                     end else if (i < 4 && j < 4) begin
                         tp_sram_C_din <= final_result[i][j][7:0];
-                        j <= j + 1;
+                        j <= 5'(j + 1); // Explicitly cast to 5 bits
                     end else if (i < 4) begin
-                        i <= i + 1; j <= 0;
+                        i <= 5'(i + 1); // Explicitly cast to 5 bits
+                        j <= 0;
                     end else begin
                         done <= 1; state <= IDLE;
                     end

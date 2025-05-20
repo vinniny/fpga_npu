@@ -6,7 +6,7 @@ module matrix_dot (
     output logic [15:0] c,
     output logic done
 );
-    logic [3:0] i;
+    logic [4:0] i; // 0 to 15, 5 bits
     logic computing;
     (* use_dsp = "no" *) logic [15:0] temp;
 
@@ -20,7 +20,7 @@ module matrix_dot (
             (* use_dsp = "no" *) temp = a[i] * b[i]; // LUT-based multiplication
             (* use_dsp = "no" *) c <= c + temp;      // LUT-based accumulation
             if (i < 15) begin
-                i <= i + 1;
+                i <= 5'(i + 1); // Explicitly cast to 5 bits
             end else begin
                 done <= 1;
                 computing <= 0;
