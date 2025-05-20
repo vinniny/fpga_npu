@@ -9,7 +9,15 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv",
-    "InstLine" : 5,
+    "InstLine" : 9,
+    "InstName" : "pll_inst",
+    "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_rpll/gowin_rpll.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_rPLL_100mhz"
+   },
+   {
+    "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv",
+    "InstLine" : 25,
     "InstName" : "npu_inst",
     "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv",
     "ModuleLine" : 1,

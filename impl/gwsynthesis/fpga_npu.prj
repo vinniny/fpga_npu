@@ -17,6 +17,7 @@
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.v" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv" type="verilog"/>
+        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_rpll\gowin_rpll.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

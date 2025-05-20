@@ -13,7 +13,9 @@ Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.v'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv'
+Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_rpll\gowin_rpll.v'
 Compiling module 'top'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv":1)
+Compiling module 'Gowin_rPLL_100mhz'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_rpll\gowin_rpll.v":10)
 Compiling module 'top_npu_system'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv":1)
 Compiling module 'spi_slave'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv":1)
 Compiling module 'sram_A'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_A.sv":1)
