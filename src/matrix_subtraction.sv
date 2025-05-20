@@ -1,11 +1,11 @@
 module matrix_subtraction (
     input logic clk, rst_n, start,
     input logic [7:0] a [0:3][0:3],
-    input logic [7:0] b [0:3][0:3],
+    input logic [7:0] b [0:3][0:3], // Fixed 7:8 to 7:0
     output logic [15:0] c [0:3][0:3],
     output logic done
 );
-    logic [3:0] i, j; // Widened to 4 bits
+    logic [4:0] i, j; // Widened to 5 bits
     logic computing;
 
     always_ff @(posedge clk or negedge rst_n) begin

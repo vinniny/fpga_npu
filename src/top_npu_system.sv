@@ -12,7 +12,6 @@ module top_npu_system (
     logic sram_A_we, sram_B_we, sram_C_we;
     logic [7:0] sram_A_din, sram_B_din, sram_C_din;
 
-    // Intermediate signals from tile processor
     logic tp_sram_A_we, tp_sram_B_we, tp_sram_C_we;
     logic [9:0] tp_sram_A_addr, tp_sram_B_addr, tp_sram_C_addr;
     logic [7:0] tp_sram_A_din, tp_sram_B_din, tp_sram_C_din;
@@ -48,12 +47,10 @@ module top_npu_system (
         .done(done)
     );
 
-    // SPI write signals
     logic spi_sram_A_we, spi_sram_B_we;
     logic [9:0] spi_sram_A_addr, spi_sram_B_addr;
     logic [7:0] spi_sram_A_din, spi_sram_B_din;
 
-    // SPI write logic
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             spi_sram_A_we <= 0;
@@ -75,7 +72,6 @@ module top_npu_system (
         end
     end
 
-    // Combine SPI and tile processor signals
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             sram_A_we <= 0;

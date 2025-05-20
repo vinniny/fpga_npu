@@ -5,7 +5,7 @@ module matrix_addition (
     output logic [15:0] c [0:3][0:3],
     output logic done
 );
-    logic [3:0] i, j; // Widened to 4 bits
+    logic [4:0] i, j; // Widened to 5 bits
     logic computing;
 
     always_ff @(posedge clk or negedge rst_n) begin
