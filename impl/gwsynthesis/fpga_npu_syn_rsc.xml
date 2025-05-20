@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" T_Register="259(0)" T_Alu="128(0)" T_Lut="403(0)" T_Bsram="8(0)">
- <SubModule name="tile" Register="259" Alu="128" Lut="403" Bsram="8" T_Register="259(259)" T_Alu="128(128)" T_Lut="403(403)" T_Bsram="8(8)"/>
+<Module name="top" T_Register="2757(0)" T_Alu="340(0)" T_Lut="3201(0)" T_MULTADDALU18X18="6(0)" T_Bsram="3(0)">
+ <SubModule name="npu_inst" Register="50" Lut="38" T_Register="2757(50)" T_Alu="340(0)" T_Lut="3201(38)" T_MULTADDALU18X18="6(0)" T_Bsram="3(0)">
+  <SubModule name="spi_inst" Register="54" Alu="4" Lut="10" T_Register="54(54)" T_Alu="4(4)" T_Lut="10(10)"/>
+  <SubModule name="sram_A_inst" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="sram_B_inst" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="sram_C_inst" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="tp_inst" Register="1952" Alu="64" Lut="717" T_Register="2653(1952)" T_Alu="336(64)" T_Lut="3153(717)" T_MULTADDALU18X18="6(0)">
+   <SubModule name="gen_dsp[0].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
+   <SubModule name="gen_dsp[1].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
+   <SubModule name="gen_dsp[2].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
+   <SubModule name="gen_dsp[3].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
+   <SubModule name="gen_dsp[4].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
+   <SubModule name="mul_inst" Register="216" Alu="128" Lut="659" T_Register="216(216)" T_Alu="128(128)" T_Lut="659(659)"/>
+   <SubModule name="add_inst" Register="138" Alu="8" Lut="168" T_Register="138(138)" T_Alu="8(8)" T_Lut="168(168)"/>
+   <SubModule name="sub_inst" Register="138" Alu="8" Lut="167" T_Register="138(138)" T_Alu="8(8)" T_Lut="167(167)"/>
+   <SubModule name="conv_inst" Register="195" Alu="128" Lut="1279" T_Register="195(195)" T_Alu="128(128)" T_Lut="1279(1279)"/>
+   <SubModule name="dot_inst" Register="14" Lut="163" MULTADDALU18X18="1" T_Register="14(14)" T_Lut="163(163)" T_MULTADDALU18X18="1(1)"/>
+  </SubModule>
+ </SubModule>
 </Module>

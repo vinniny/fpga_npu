@@ -1,6 +1,6 @@
 module tile_processor (
     input logic clk, rst_n, start,
-    input logic [2:0] tile_i, tile_j, // 8x8 tiles
+    input logic [2:0] tile_i, tile_j,
     input logic [2:0] op_code,
     input logic [7:0] sram_A_dout, sram_B_dout,
     output logic tp_sram_A_we, tp_sram_B_we, tp_sram_C_we,
@@ -11,27 +11,27 @@ module tile_processor (
     parameter MUL = 3'd0, ADD = 3'd1, SUB = 3'd2, CONV = 3'd3, DOT = 3'd4;
     typedef enum logic [1:0] {IDLE, LOAD, COMPUTE, DONE} state_t;
     state_t state;
-    logic [7:0] a_tile [0:15][0:31], b_tile [0:31][0:15]; // Four 4x4 tiles
+    logic [7:0] a_tile [0:3][0:15], b_tile [0:15][0:3];
     logic [7:0] add_a [0:3][0:3], add_b [0:3][0:3];
-    logic [7:0] conv_input [0:19][0:5], conv_kernel [0:2][0:2]; // Four 6x6 tiles
-    logic [7:0] dot_a [0:31], dot_b [0:31];
-    logic [15:0] mul_result [0:15][0:3], add_result [0:3][0:3], sub_result [0:3][0:3], conv_result [0:15][0:3];
-    logic [15:0] dot_result, final_result [0:15][0:3];
+    logic [7:0] conv_input [0:5][0:5], conv_kernel [0:2][0:2];
+    logic [7:0] dot_a [0:15], dot_b [0:15];
+    logic [15:0] mul_result [0:3][0:3], add_result [0:3][0:3], sub_result [0:3][0:3], conv_result [0:3][0:3];
+    logic [15:0] dot_result, final_result [0:3][0:3];
     logic mul_done, add_done, sub_done, conv_done, dot_done, op_done;
-    logic [7:0] i, j, k; // Widened to 8 bits
+    logic [7:0] i, j, k;
 
-    // Shared DSP block (16 DSPs)
-    logic [17:0] dsp_a0 [0:15], dsp_b0 [0:15];
-    logic [36:0] dsp_out [0:15];
+    // Shared DSP block (5 DSPs)
+    logic [17:0] dsp_a0 [0:4], dsp_b0 [0:4];
+    logic [36:0] dsp_out [0:4];
     logic dsp_ce;
 
-    // Intermediate DSP signals for each module
-    logic [17:0] mul_dsp_a0 [0:15], mul_dsp_b0 [0:15], conv_dsp_a0 [0:15], conv_dsp_b0 [0:15], dot_dsp_a0 [0:15], dot_dsp_b0 [0:15];
-    logic mul_dsp_ce, conv_dsp_ce, dot_dsp_ce;
+    // Intermediate DSP signals
+    logic [17:0] mul_dsp_a0 [0:4], mul_dsp_b0 [0:4], conv_dsp_a0 [0:4], conv_dsp_b0 [0:4];
+    logic mul_dsp_ce, conv_dsp_ce;
 
     genvar z;
     generate
-        for (z = 0; z < 16; z++) begin : gen_dsp
+        for (z = 0; z < 5; z++) begin : gen_dsp
             Gowin_MULTADDALU dsp_inst (
                 .a0(dsp_a0[z]),
                 .b0(dsp_b0[z]),
@@ -68,37 +68,27 @@ module tile_processor (
     );
     matrix_dot dot_inst (
         .clk(clk), .rst_n(rst_n), .start(op_code == DOT && state == COMPUTE),
-        .a(dot_a), .b(dot_b), .c(dot_result),
-        .dsp_a0(dot_dsp_a0), .dsp_b0(dot_dsp_b0), .dsp_out(dsp_out), .dsp_ce(dot_dsp_ce),
-        .done(dot_done)
+        .a(dot_a), .b(dot_b), .c(dot_result), .done(dot_done)
     );
 
-    // Multiplex DSP inputs and control signals
     always_comb begin
         case (op_code)
             MUL: begin
-                for (int z = 0; z < 16; z++) begin
+                for (int z = 0; z < 5; z++) begin
                     dsp_a0[z] = mul_dsp_a0[z];
                     dsp_b0[z] = mul_dsp_b0[z];
                 end
                 dsp_ce = mul_dsp_ce;
             end
             CONV: begin
-                for (int z = 0; z < 16; z++) begin
+                for (int z = 0; z < 5; z++) begin
                     dsp_a0[z] = conv_dsp_a0[z];
                     dsp_b0[z] = conv_dsp_b0[z];
                 end
                 dsp_ce = conv_dsp_ce;
             end
-            DOT: begin
-                for (int z = 0; z < 16; z++) begin
-                    dsp_a0[z] = dot_dsp_a0[z];
-                    dsp_b0[z] = dot_dsp_b0[z];
-                end
-                dsp_ce = dot_dsp_ce;
-            end
             default: begin
-                for (int z = 0; z < 16; z++) begin
+                for (int z = 0; z < 5; z++) begin
                     dsp_a0[z] = 0;
                     dsp_b0[z] = 0;
                 end
@@ -109,13 +99,13 @@ module tile_processor (
 
     always_comb begin
         op_done = 0;
-        for (int x = 0; x < 16; x++)
+        for (int x = 0; x < 4; x++)
             for (int y = 0; y < 4; y++)
                 final_result[x][y] = 0;
         case (op_code)
             MUL: begin
                 op_done = mul_done;
-                for (int x = 0; x < 16; x++)
+                for (int x = 0; x < 4; x++)
                     for (int y = 0; y < 4; y++)
                         final_result[x][y] = mul_result[x][y];
             end
@@ -133,7 +123,7 @@ module tile_processor (
             end
             CONV: begin
                 op_done = conv_done;
-                for (int x = 0; x < 16; x++)
+                for (int x = 0; x < 4; x++)
                     for (int y = 0; y < 4; y++)
                         final_result[x][y] = conv_result[x][y];
             end
@@ -151,12 +141,12 @@ module tile_processor (
             state <= IDLE; i <= 0; j <= 0; k <= 0;
             done <= 0; tp_sram_A_we <= 0; tp_sram_B_we <= 0; tp_sram_C_we <= 0;
             tp_sram_A_din <= 0; tp_sram_B_din <= 0;
-            for (int x = 0; x < 16; x++)
-                for (int y = 0; y < 32; y++) begin
+            for (int x = 0; x < 4; x++)
+                for (int y = 0; y < 16; y++) begin
                     a_tile[x][y] <= 0;
                     b_tile[y][x] <= 0;
                 end
-            for (int x = 0; x < 32; x++) begin
+            for (int x = 0; x < 16; x++) begin
                 dot_a[x] <= 0;
                 dot_b[x] <= 0;
             end
@@ -170,21 +160,21 @@ module tile_processor (
                 LOAD: begin
                     case (op_code)
                         MUL: begin
-                            tp_sram_A_addr <= ((tile_i * 128) + (i * 32) + k) % 1024;
-                            tp_sram_B_addr <= ((k * 8) + (tile_j * 2) + j) % 1024;
-                            if (i < 16 && k < 32) begin
+                            tp_sram_A_addr <= ((tile_i * 32) + (i * 16) + k) % 256;
+                            tp_sram_B_addr <= ((k * 4) + (tile_j * 1) + j) % 256;
+                            if (i < 4 && k < 16) begin
                                 a_tile[i][k] <= sram_A_dout;
                                 b_tile[k][j] <= sram_B_dout;
                                 k <= k + 1;
-                            end else if (i < 16) begin
+                            end else if (i < 4) begin
                                 i <= i + 1; k <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
                         end
                         ADD, SUB: begin
-                            tp_sram_A_addr <= ((tile_i * 128) + (i * 4) + j) % 1024;
-                            tp_sram_B_addr <= ((tile_i * 128) + (i * 4) + j) % 1024;
+                            tp_sram_A_addr <= ((tile_i * 32) + (i * 4) + j) % 256;
+                            tp_sram_B_addr <= ((tile_i * 32) + (i * 4) + j) % 256;
                             if (i < 4 && j < 4) begin
                                 add_a[i][j] <= sram_A_dout;
                                 add_b[i][j] <= sram_B_dout;
@@ -196,23 +186,23 @@ module tile_processor (
                             end
                         end
                         CONV: begin
-                            tp_sram_A_addr <= ((tile_i * 128) + (i * 6) + j) % 1024;
-                            tp_sram_B_addr <= ((tile_i * 128) + (i * 3) + j) % 1024;
-                            if (i < 20 && j < 6) begin
+                            tp_sram_A_addr <= ((tile_i * 32) + (i * 6) + j) % 256;
+                            tp_sram_B_addr <= ((tile_i * 32) + (i * 3) + j) % 256;
+                            if (i < 6 && j < 6) begin
                                 conv_input[i][j] <= sram_A_dout;
                                 if (i < 3 && j < 3)
                                     conv_kernel[i][j] <= sram_B_dout;
                                 j <= j + 1;
-                            end else if (i < 20) begin
+                            end else if (i < 6) begin
                                 i <= i + 1; j <= 0;
                             end else begin
                                 state <= COMPUTE;
                             end
                         end
                         DOT: begin
-                            tp_sram_A_addr <= ((tile_i * 32) + k) % 1024;
-                            tp_sram_B_addr <= ((tile_j * 32) + k) % 1024;
-                            if (k < 32) begin
+                            tp_sram_A_addr <= ((tile_i * 16) + k) % 256;
+                            tp_sram_B_addr <= ((tile_j * 16) + k) % 256;
+                            if (k < 16) begin
                                 dot_a[k] <= sram_A_dout;
                                 dot_b[k] <= sram_B_dout;
                                 k <= k + 1;
@@ -226,15 +216,15 @@ module tile_processor (
                     state <= DONE; i <= 0; j <= 0;
                 end
                 DONE: begin
-                    tp_sram_C_addr <= ((tile_i * 128) + (i * 4) + j) % 1024;
+                    tp_sram_C_addr <= ((tile_i * 32) + (i * 4) + j) % 256;
                     tp_sram_C_we <= 1;
                     if (op_code == DOT) begin
                         tp_sram_C_din <= dot_result[7:0];
                         done <= 1; state <= IDLE;
-                    end else if (i < 16 && j < 4) begin
+                    end else if (i < 4 && j < 4) begin
                         tp_sram_C_din <= final_result[i][j][7:0];
                         j <= j + 1;
-                    end else if (i < 16) begin
+                    end else if (i < 4) begin
                         i <= i + 1; j <= 0;
                     end else begin
                         done <= 1; state <= IDLE;
