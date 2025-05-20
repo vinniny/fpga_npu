@@ -69,7 +69,7 @@ module matrix_multiplier (
                 end
             endcase
             if (k < 15) begin
-                k <= k + 1;
+                k <= 4'(k + 1); // Explicitly cast to 4 bits
             end else if (iter < 3) begin
                 iter <= 3'(iter + 1); // Explicitly cast to 3 bits
                 k <= 0;

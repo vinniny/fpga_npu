@@ -25,7 +25,6 @@ Extracting RAM for identifier 'mem'("C:\Users\thanh\Desktop\FPGA projects\Demo4\
 Compiling module 'tile_processor'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.v":2)
 Compiling module 'Gowin_MULTADDALU'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_multaddalu\gowin_multaddalu.v":10)
 Compiling module 'matrix_multiplier'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_multiplier.sv":2)
-WARN  (EX3791) : Expression size 5 truncated to fit in target size 4("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_multiplier.sv":72)
 Compiling module 'matrix_addition'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix _addition.sv":1)
 Compiling module 'matrix_subtraction'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv":1)
 Compiling module 'matrix_convolution'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv":2)
