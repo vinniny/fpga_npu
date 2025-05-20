@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project implements a Neural Processing Unit (NPU) on the Sipeed Tang Nano 9K (Gowin GW1NR-9C FPGA) for matrix operations, including multiplication, convolution, addition, subtraction, and dot product. Designed for a multi-FPGA system, it achieves \~0.384 GMAC/s per FPGA at 50 MHz (\~1.536 GMAC/s across 4 FPGAs) with a 16×16 matrix size and 4x4 tiling strategy.
+This project implements a Neural Processing Unit (NPU) on the Sipeed Tang Nano 9K (Gowin GW1NR-9C FPGA) for matrix operations, including multiplication, convolution, addition, subtraction, and dot product. Designed for a multi-FPGA system, it can achieves \~0.384 GMAC/s per FPGA at 50 MHz (\~1.536 GMAC/s across 4 FPGAs) with a 16×16 matrix size and 4x4 tiling strategy.
 
 ## Features
 
