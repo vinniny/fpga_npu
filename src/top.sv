@@ -3,9 +3,9 @@ module top (
     output logic miso, done
 );
     logic clk_100M; // 100 MHz clock
-    logic pll_lock;
+    logic pll_lock; // PLL lock signal
 
-    // Instantiate Gowin_rPLL_100mhz
+    // Instantiate rPLL for 50 MHz to 100 MHz
     Gowin_rPLL_100mhz pll_inst (
         .clkout(clk_100M), // 100 MHz output
         .lock(pll_lock),   // PLL lock signal
@@ -21,10 +21,9 @@ module top (
             rst_n_sync <= pll_lock;
     end
 
-    // Instantiate top_npu_system with 100 MHz clock
     top_npu_system npu_inst (
-        .clk(clk_100M && pll_lock), // Use 100 MHz clock only when locked
-        .rst_n(rst_n),
+        .clk(clk_100M),
+        .rst_n(rst_n_sync),
         .sclk(sclk),
         .mosi(mosi),
         .cs_n(cs_n),
