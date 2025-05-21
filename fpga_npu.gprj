@@ -23,6 +23,8 @@
         <File path="src/tile_processor.v" type="file.verilog" enable="1"/>
         <File path="src/top.sv" type="file.verilog" enable="1"/>
         <File path="src/top_npu_system.sv" type="file.verilog" enable="1"/>
+        <File path="src/fpga_npu.cst" type="file.cst" enable="1"/>
+        <File path="src/fpga_npu.sdc" type="file.sdc" enable="1"/>
         <File path="src/sram_A_init.hex" type="file.other" enable="1"/>
         <File path="src/sram_B_init.hex" type="file.other" enable="1"/>
         <File path="src/sram_C_init.hex" type="file.other" enable="1"/>

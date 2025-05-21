@@ -1,4 +1,4 @@
-(* MAX_DSP = 5 *)
+(* MAX_DSP = 5, use_dsp = "hard" *)
 module tile_processor (
     input logic clk, rst_n, start,
     input logic [2:0] tile_i, tile_j,

@@ -1,7 +1,9 @@
 -d C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\gwsynthesis\fpga_npu.vg
 -p GW1NR-9C-QFN88P-6
 -pn GW1NR-LV9QN88PC6/I5
+-cst C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\fpga_npu.cst
 -cfg C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\device.cfg
+-sdc C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\fpga_npu.sdc
 -bit
 -tr
 -ph

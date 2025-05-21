@@ -1,29 +1,14 @@
 Reading netlist file: "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\gwsynthesis\fpga_npu.vg"
 Parsing netlist file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\gwsynthesis\fpga_npu.vg" completed
 Processing netlist completed
+Reading constraint file: "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\fpga_npu.cst"
+Physical Constraint parsed completed
 Running placement......
 [10%] Placement Phase 0 completed
 [20%] Placement Phase 1 completed
-[30%] Placement Phase 2 completed
-WARN  (TA1132) :  'clk' was determined to be a clock but was not created.
-WARN  (TA1132) :  'sclk' was determined to be a clock but was not created.
-[50%] Placement Phase 3 completed
-Running routing......
-[60%] Routing Phase 0 completed
-[70%] Routing Phase 1 completed
-[80%] Routing Phase 2 completed
-[90%] Routing Phase 3 completed
-Running timing analysis......
-[95%] Timing analysis completed
-Placement and routing completed
-Bitstream generation in progress......
-Bitstream generation completed
-Running power analysis......
-[100%] Power analysis completed
-Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.power.html" completed
+PNR has been stopped
 Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.pin.html" completed
 Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.rpt.html" completed
 Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.rpt.txt" completed
-Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.tr.html" completed
-Tue May 20 15:25:39 2025
+Wed May 21 19:36:43 2025
 

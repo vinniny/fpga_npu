@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="1" Lut="1" T_Register="2792(1)" T_Alu="332(0)" T_Lut="3239(1)" T_MULTADDALU18X18="6(0)" T_Bsram="3(0)" T_Ssram="2(0)">
+<Module name="top" Register="1" Lut="1" T_Register="2820(1)" T_Alu="347(0)" T_Lut="3304(1)" T_MULTADDALU18X18="5(0)" T_Bsram="3(0)" T_Ssram="2(0)">
  <SubModule name="pll_inst"/>
- <SubModule name="npu_inst" Register="54" Lut="42" T_Register="2791(54)" T_Alu="332(0)" T_Lut="3238(42)" T_MULTADDALU18X18="6(0)" T_Bsram="3(0)" T_Ssram="2(0)">
+ <SubModule name="npu_inst" Register="54" Lut="42" T_Register="2819(54)" T_Alu="347(0)" T_Lut="3303(42)" T_MULTADDALU18X18="5(0)" T_Bsram="3(0)" T_Ssram="2(0)">
   <SubModule name="spi_inst" Register="87" Alu="4" Lut="16" Ssram="2" T_Register="87(87)" T_Alu="4(4)" T_Lut="16(16)" T_Ssram="2(2)"/>
   <SubModule name="sram_A_inst" Bsram="1" T_Bsram="1(1)"/>
   <SubModule name="sram_B_inst" Bsram="1" T_Bsram="1(1)"/>
   <SubModule name="sram_C_inst" Bsram="1" T_Bsram="1(1)"/>
-  <SubModule name="tp_inst" Register="1952" Alu="56" Lut="739" T_Register="2650(1952)" T_Alu="328(56)" T_Lut="3180(739)" T_MULTADDALU18X18="6(0)">
+  <SubModule name="tp_inst" Register="1952" Alu="56" Lut="728" T_Register="2678(1952)" T_Alu="343(56)" T_Lut="3245(728)" T_MULTADDALU18X18="5(0)">
    <SubModule name="gen_dsp[0].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
    <SubModule name="gen_dsp[1].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
    <SubModule name="gen_dsp[2].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
    <SubModule name="gen_dsp[3].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
    <SubModule name="gen_dsp[4].dsp_inst" MULTADDALU18X18="1" T_MULTADDALU18X18="1(1)"/>
    <SubModule name="mul_inst" Register="217" Alu="128" Lut="666" T_Register="217(217)" T_Alu="128(128)" T_Lut="666(666)"/>
-   <SubModule name="add_inst" Register="136" Alu="8" Lut="159" T_Register="136(136)" T_Alu="8(8)" T_Lut="159(159)"/>
-   <SubModule name="sub_inst" Register="136" Alu="8" Lut="159" T_Register="136(136)" T_Alu="8(8)" T_Lut="159(159)"/>
-   <SubModule name="conv_inst" Register="194" Alu="128" Lut="1292" T_Register="194(194)" T_Alu="128(128)" T_Lut="1292(1292)"/>
-   <SubModule name="dot_inst" Register="15" Lut="165" MULTADDALU18X18="1" T_Register="15(15)" T_Lut="165(165)" T_MULTADDALU18X18="1(1)"/>
+   <SubModule name="add_inst" Register="136" Alu="8" Lut="160" T_Register="136(136)" T_Alu="8(8)" T_Lut="160(160)"/>
+   <SubModule name="sub_inst" Register="136" Alu="8" Lut="160" T_Register="136(136)" T_Alu="8(8)" T_Lut="160(160)"/>
+   <SubModule name="conv_inst" Register="194" Alu="128" Lut="1308" T_Register="194(194)" T_Alu="128(128)" T_Lut="1308(1308)"/>
+   <SubModule name="dot_inst" Register="43" Alu="15" Lut="223" T_Register="43(43)" T_Alu="15(15)" T_Lut="223(223)"/>
   </SubModule>
  </SubModule>
 </Module>
