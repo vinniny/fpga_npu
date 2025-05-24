@@ -29,7 +29,7 @@
         <File path="src/tb_sram_C.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_tile_processor.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_top.sv" type="file.verilog" enable="0"/>
-        <File path="src/tb_top_npu_system.sv" type="file.verilog" enable="1"/>
+        <File path="src/tb_top_npu_system.sv" type="file.verilog" enable="0"/>
         <File path="src/tile_processor.v" type="file.verilog" enable="1"/>
         <File path="src/top.sv" type="file.verilog" enable="1"/>
         <File path="src/top_npu_system.sv" type="file.verilog" enable="1"/>

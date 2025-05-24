@@ -12,6 +12,7 @@ Running routing......
 [60%] Routing Phase 0 completed
 [70%] Routing Phase 1 completed
 [80%] Routing Phase 2 completed
+WARN  (PR1014) : Generic routing resource will be used to clock signal 'sclk_d' by the specified constraint. And then it may lead to the excessive delay or skew
 [90%] Routing Phase 3 completed
 Running timing analysis......
 [95%] Timing analysis completed
@@ -25,5 +26,5 @@ Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga
 Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.rpt.html" completed
 Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.rpt.txt" completed
 Generate file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\pnr\fpga_npu.tr.html" completed
-Sat May 24 15:13:20 2025
+Sat May 24 17:36:44 2025
 
