@@ -7,7 +7,7 @@ module top (
     logic rpll_clk_reg /* synthesis syn_keep=1 */; // Dummy register
 
     // Instantiate rPLL for 27 MHz to 47.25 MHz
-    Gowin_rPLL_100mhz pll_inst (
+    Gowin_rPLL pll_inst (
         .clkout(rpll_clk),
         .lock(pll_lock),
         .clkin(clk)

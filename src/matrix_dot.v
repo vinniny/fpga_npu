@@ -16,13 +16,9 @@ module matrix_dot (
     logic [7:0] a_flat_slice;
 
     always_comb begin
-        for (int j = 0; j < 16; j++) begin
+        for (int j = 0; j < 16; j++)
             a_flat[8*j +: 8] = a[j];
-        end
-        // Explicit bit selection
-        for (int k = 0; k < 8; k++) begin
-            a_flat_slice[k] = a_flat[index + k];
-        end
+        a_flat_slice = a_flat[8*index +: 8]; // Explicit 8-bit
     end
 
     always_ff @(posedge clk or negedge rst_n) begin
@@ -32,10 +28,10 @@ module matrix_dot (
             computing <= 1;
             i <= 0; c <= 0; mul_counter <= 0; mul_result <= 0; index <= 0;
         end else if (computing) begin
-            index <= i << 3;
+            index <= i;
             if (mul_counter == 0) begin
                 mul_result <= 0;
-                mul_counter <= a_flat_slice; // Line 38
+                mul_counter <= a_flat_slice;
             end else if (mul_counter > 0) begin
                 mul_result <= mul_result + b[i];
                 mul_counter <= mul_counter - 1;

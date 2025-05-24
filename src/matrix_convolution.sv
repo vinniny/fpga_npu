@@ -9,10 +9,11 @@ module matrix_convolution (
     output logic dsp_ce,
     output logic done
 );
-    logic [2:0] m, n;
+    (* keep = "true" *) logic [2:0] m, n;
+    (* keep = "true" *) logic [15:0] c [0:3][0:3];
     logic [2:0] iter;
     logic computing;
-    (* max_fanout = 10 *) logic [2:0] row_idx, col_idx;
+    logic [2:0] row_idx, col_idx;
 
     assign row_idx = m;
     assign col_idx = n;
@@ -24,35 +25,30 @@ module matrix_convolution (
         if (computing) begin
             case (iter)
                 0: begin
-                    dsp_a0[0] = {10'd0, input_tile[0+row_idx][0+col_idx]};
-                    dsp_a0[1] = {10'd0, input_tile[0+row_idx][1+col_idx]};
-                    dsp_a0[2] = {10'd0, input_tile[0+row_idx][2+col_idx]};
-                    dsp_a0[3] = {10'd0, input_tile[0+row_idx][3+col_idx]};
-                    dsp_a0[4] = {10'd0, input_tile[1+row_idx][0+col_idx]};
+                    dsp_a0[0] = {10'd0, input_tile[row_idx][col_idx]};
+                    dsp_a0[1] = {10'd0, input_tile[row_idx][col_idx+1]};
+                    dsp_a0[2] = {10'd0, input_tile[row_idx][col_idx+2]};
+                    dsp_a0[3] = {10'd0, input_tile[row_idx][col_idx+3]};
+                    dsp_a0[4] = {10'd0, input_tile[row_idx+1][col_idx]};
                 end
                 1: begin
-                    dsp_a0[0] = {10'd0, input_tile[1+row_idx][1+col_idx]};
-                    dsp_a0[1] = {10'd0, input_tile[1+row_idx][2+col_idx]};
-                    dsp_a0[2] = {10'd0, input_tile[1+row_idx][3+col_idx]};
-                    dsp_a0[3] = {10'd0, input_tile[2+row_idx][0+col_idx]};
-                    dsp_a0[4] = {10'd0, input_tile[2+row_idx][1+col_idx]};
+                    dsp_a0[0] = {10'd0, input_tile[row_idx+1][col_idx+1]};
+                    dsp_a0[1] = {10'd0, input_tile[row_idx+1][col_idx+2]};
+                    dsp_a0[2] = {10'd0, input_tile[row_idx+1][col_idx+3]};
+                    dsp_a0[3] = {10'd0, input_tile[row_idx+2][col_idx]};
+                    dsp_a0[4] = {10'd0, input_tile[row_idx+2][col_idx+1]};
                 end
                 2: begin
-                    dsp_a0[0] = {10'd0, input_tile[2+row_idx][2+col_idx]};
-                    dsp_a0[1] = {10'd0, input_tile[2+row_idx][3+col_idx]};
-                    dsp_a0[2] = {10'd0, input_tile[3+row_idx][0+col_idx]};
-                    dsp_a0[3] = {10'd0, input_tile[3+row_idx][1+col_idx]};
-                    dsp_a0[4] = {10'd0, input_tile[3+row_idx][2+col_idx]};
+                    dsp_a0[0] = {10'd0, input_tile[row_idx+2][col_idx+2]};
+                    dsp_a0[1] = {10'd0, input_tile[row_idx+2][col_idx+3]};
+                    dsp_a0[2] = {10'd0, input_tile[row_idx+3][col_idx]};
+                    dsp_a0[3] = {10'd0, input_tile[row_idx+3][col_idx+1]};
+                    dsp_a0[4] = {10'd0, input_tile[row_idx+3][col_idx+2]};
                 end
-                3: begin
-                    dsp_a0[0] = {10'd0, input_tile[3+row_idx][3+col_idx]};
-                end
+                3: dsp_a0[0] = {10'd0, input_tile[row_idx+3][col_idx+3]};
             endcase
-            dsp_b0[0] = {10'd0, kernel[m][n]};
-            dsp_b0[1] = (iter <= 2) ? {10'd0, kernel[m][n]} : 0;
-            dsp_b0[2] = (iter <= 2) ? {10'd0, kernel[m][n]} : 0;
-            dsp_b0[3] = (iter <= 2) ? {10'd0, kernel[m][n]} : 0;
-            dsp_b0[4] = (iter <= 2) ? {10'd0, kernel[m][n]} : 0;
+            for (int z = 0; z < 5; z++)
+                dsp_b0[z] = (iter <= 2 || z == 0) ? {10'd0, kernel[m][n]} : 0;
         end
     end
 
@@ -82,14 +78,11 @@ module matrix_convolution (
                     c[3][0] <= c[3][0] + dsp_out[2][15:0]; c[3][1] <= c[3][1] + dsp_out[3][15:0];
                     c[3][2] <= c[3][2] + dsp_out[4][15:0];
                 end
-                3: begin
-                    c[3][3] <= c[3][3] + dsp_out[0][15:0];
-                end
+                3: c[3][3] <= c[3][3] + dsp_out[0][15:0];
             endcase
             if (m < 2 || (m == 2 && n < 2)) begin
-                if (n < 2) begin
-                    n <= 3'(n + 1);
-                end else begin
+                if (n < 2) n <= 3'(n + 1);
+                else begin
                     m <= 3'(m + 1);
                     n <= 0;
                 end

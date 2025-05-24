@@ -5,7 +5,7 @@
 -part_number GW1NR-LV9QN88PC6/I5
 
 
--mod_name Gowin_rPLL_100mhz
+-mod_name Gowin_rPLL
 -file_name gowin_rpll
 -path C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_rpll/
 -type PLL

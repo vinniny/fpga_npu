@@ -8,3 +8,4 @@ create_clock -name rpll_clk -period 21.164 -waveform {0 10.582} [get_nets {rpll_
 set_clock_groups -asynchronous -group [get_clocks {sclk}] -group [get_clocks {rpll_clk}]
 set_false_path -from [get_clocks {sclk}] -to [get_clocks {rpll_clk}] 
 set_false_path -from [get_clocks {rpll_clk}] -to [get_clocks {sclk}] 
+
