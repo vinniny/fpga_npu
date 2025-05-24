@@ -16,10 +16,20 @@
         <File path="src/sram_A.sv" type="file.verilog" enable="1"/>
         <File path="src/sram_B.sv" type="file.verilog" enable="1"/>
         <File path="src/sram_C.sv" type="file.verilog" enable="1"/>
+        <File path="src/tb_gowin_multaddalu.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_gowin_rpll.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_matrix_addition.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_matrix_convolution.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_matrix_dot.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_matrix_multiplier.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_matrix_subtraction.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_spi_slave.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_sram_A.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_sram_B.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_sram_C.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_tile_processor.sv" type="file.verilog" enable="0"/>
-        <File path="src/testbench.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_top.sv" type="file.verilog" enable="0"/>
+        <File path="src/tb_top_npu_system.sv" type="file.verilog" enable="1"/>
         <File path="src/tile_processor.v" type="file.verilog" enable="1"/>
         <File path="src/top.sv" type="file.verilog" enable="1"/>
         <File path="src/top_npu_system.sv" type="file.verilog" enable="1"/>

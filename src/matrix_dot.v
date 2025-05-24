@@ -19,7 +19,10 @@ module matrix_dot (
         for (int j = 0; j < 16; j++) begin
             a_flat[8*j +: 8] = a[j];
         end
-        a_flat_slice = a_flat[index +: 8];
+        // Explicit bit selection
+        for (int k = 0; k < 8; k++) begin
+            a_flat_slice[k] = a_flat[index + k];
+        end
     end
 
     always_ff @(posedge clk or negedge rst_n) begin
@@ -32,7 +35,7 @@ module matrix_dot (
             index <= i << 3;
             if (mul_counter == 0) begin
                 mul_result <= 0;
-                mul_counter <= a_flat_slice; // Line 36
+                mul_counter <= a_flat_slice; // Line 38
             end else if (mul_counter > 0) begin
                 mul_result <= mul_result + b[i];
                 mul_counter <= mul_counter - 1;

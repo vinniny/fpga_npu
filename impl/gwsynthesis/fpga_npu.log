@@ -31,7 +31,7 @@ Compiling module 'matrix_addition'("C:\Users\thanh\Desktop\FPGA projects\Demo4\f
 Compiling module 'matrix_subtraction'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv":1)
 Compiling module 'matrix_convolution'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv":2)
 Compiling module 'matrix_dot'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.v":2)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 8("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.v":38)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 8("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.v":41)
 NOTE  (EX0101) : Current top module is "top"
 [5%] Running netlist conversion ...
 Running device independent optimization ...
