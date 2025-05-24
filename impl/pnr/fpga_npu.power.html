@@ -65,11 +65,11 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Physical Constraints File</td>
-<td>---</td>
+<td>C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\fpga_npu.cst</td>
 </tr>
 <tr>
 <td class="label">Timing Constraints File</td>
-<td>---</td>
+<td>C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\fpga_npu.sdc</td>
 </tr>
 <tr>
 <td class="label">Tool Version</td>
@@ -89,7 +89,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Tue May 20 15:25:39 2025
+<td>Sat May 24 08:53:25 2025
 </td>
 </tr>
 <tr>
@@ -161,7 +161,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <table class="summary_table">
 <tr>
 <td class="label">Total Power (mW)</td>
-<td>40.063</td>
+<td>38.484</td>
 </tr>
 <tr>
 <td class="label">Quiescent Power (mW)</td>
@@ -169,7 +169,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Dynamic Power (mW)</td>
-<td>15.973</td>
+<td>14.394</td>
 </tr>
 <tr>
 <td class="label">Psram Power (mW)</td>
@@ -180,7 +180,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <table class="summary_table">
 <tr>
 <td class="label">Junction Temperature</td>
-<td>25.826</td>
+<td>25.792</td>
 </tr>
 <tr>
 <td class="label">Theta JA</td>
@@ -188,7 +188,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Max Allowed Ambient Temperature</td>
-<td>84.174</td>
+<td>84.208</td>
 </tr>
 </table>
 <h2><a name="Supply_Summary">Supply Information:</a></h2>
@@ -203,23 +203,23 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td>VCC</td>
 <td>1.200</td>
-<td>12.904</td>
+<td>11.659</td>
 <td>3.500</td>
-<td>19.685</td>
+<td>18.190</td>
 </tr>
 <tr>
 <td>VCCX</td>
 <td>3.300</td>
-<td>0.096</td>
+<td>0.079</td>
 <td>5.000</td>
-<td>16.817</td>
+<td>16.762</td>
 </tr>
 <tr>
 <td>VCCIO18</td>
 <td>1.800</td>
-<td>0.095</td>
+<td>0.078</td>
 <td>1.883</td>
-<td>3.561</td>
+<td>3.531</td>
 </tr>
 </table>
 <h1><a name="Detail">Power Details</a></h1>
@@ -233,27 +233,33 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td>Logic</td>
-<td>0.949</td>
+<td>0.926</td>
 <td>NA</td>
-<td>6.249</td>
+<td>5.911</td>
 </tr>
 <tr>
 <td>IO</td>
-<td>4.145
+<td>4.040
 <td>3.542
-<td>18.750
+<td>15.366
 </tr>
 <tr>
 <td>BSRAM</td>
-<td>0.511
+<td>0.483
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>PLL</td>
+<td>1.318
 <td>NA</td>
 <td>NA</td>
 </tr>
 <tr>
 <td>DSP</td>
-<td>13.905
+<td>11.163
 <td>NA</td>
-<td>3.567
+<td>3.375
 </tr>
 </table>
 <h2><a name="By_Hierarchy">Power By Hierarchy:</a></h2>
@@ -265,72 +271,76 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td>top</td>
-<td>15.365</td>
-<td>15.365(15.365)</td>
+<td>13.890</td>
+<td>13.890(13.890)</td>
 <tr>
 <td>top/npu_inst/</td>
-<td>15.365</td>
-<td>15.365(15.356)</td>
+<td>12.572</td>
+<td>12.572(12.563)</td>
 <tr>
 <td>top/npu_inst/spi_inst/</td>
-<td>0.009</td>
-<td>0.009(0.000)</td>
+<td>0.013</td>
+<td>0.013(0.000)</td>
 <tr>
 <td>top/npu_inst/sram_A_inst/</td>
-<td>0.170</td>
-<td>0.170(0.000)</td>
+<td>0.161</td>
+<td>0.161(0.000)</td>
 <tr>
 <td>top/npu_inst/sram_B_inst/</td>
-<td>0.170</td>
-<td>0.170(0.000)</td>
+<td>0.161</td>
+<td>0.161(0.000)</td>
 <tr>
 <td>top/npu_inst/sram_C_inst/</td>
-<td>0.170</td>
-<td>0.170(0.000)</td>
+<td>0.161</td>
+<td>0.161(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/</td>
-<td>14.836</td>
-<td>14.836(14.543)</td>
+<td>12.067</td>
+<td>12.067(11.792)</td>
 <tr>
 <td>top/npu_inst/tp_inst/add_inst/</td>
-<td>0.038</td>
-<td>0.038(0.000)</td>
+<td>0.036</td>
+<td>0.036(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/conv_inst/</td>
-<td>0.310</td>
-<td>0.310(0.000)</td>
+<td>0.295</td>
+<td>0.295(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/dot_inst/</td>
-<td>2.115</td>
-<td>2.115(0.000)</td>
+<td>0.045</td>
+<td>0.045(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/gen_dsp[0].dsp_inst/</td>
-<td>2.363</td>
-<td>2.363(0.000)</td>
+<td>2.233</td>
+<td>2.233(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/gen_dsp[1].dsp_inst/</td>
-<td>2.363</td>
-<td>2.363(0.000)</td>
+<td>2.233</td>
+<td>2.233(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/gen_dsp[2].dsp_inst/</td>
-<td>2.363</td>
-<td>2.363(0.000)</td>
+<td>2.233</td>
+<td>2.233(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/gen_dsp[3].dsp_inst/</td>
-<td>2.363</td>
-<td>2.363(0.000)</td>
+<td>2.233</td>
+<td>2.233(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/gen_dsp[4].dsp_inst/</td>
-<td>2.363</td>
-<td>2.363(0.000)</td>
+<td>2.233</td>
+<td>2.233(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/mul_inst/</td>
-<td>0.229</td>
-<td>0.229(0.000)</td>
+<td>0.216</td>
+<td>0.216(0.000)</td>
 <tr>
 <td>top/npu_inst/tp_inst/sub_inst/</td>
-<td>0.038</td>
-<td>0.038(0.000)</td>
+<td>0.036</td>
+<td>0.036(0.000)</td>
+<tr>
+<td>top/pll_inst/</td>
+<td>1.318</td>
+<td>1.318(0.000)</td>
 </table>
 <h2><a name="By_Clock_Domain">Power By Clock Domain:</a></h2>
 <table class="detail_table">
@@ -340,19 +350,19 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <th class="label">Total Dynamic Power(mW)</th>
 </tr>
 <tr>
-<td>clk</td>
-<td>50.000</td>
-<td>15.313</td>
+<td>rpll_clk</td>
+<td>47.250</td>
+<td>12.565</td>
 </tr>
 <tr>
 <td>sclk</td>
 <td>50.000</td>
-<td>0.056</td>
+<td>0.013</td>
 </tr>
 <tr>
-<td>NO CLOCK DOMAIN</td>
-<td>0.000</td>
-<td>0.000</td>
+<td>clk</td>
+<td>27.000</td>
+<td>1.318</td>
 </tr>
 </table>
 </div><!-- content -->

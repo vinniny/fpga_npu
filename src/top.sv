@@ -2,14 +2,14 @@ module top (
     input logic clk, rst_n, sclk, mosi, cs_n,
     output logic miso, done
 );
-    logic rpll_clk; // 100 MHz clock
+    logic rpll_clk; // 47.25 MHz clock
     logic pll_lock; // PLL lock signal
 
-    // Instantiate rPLL for 50 MHz to 100 MHz
+    // Instantiate rPLL for 27 MHz to 47.25 MHz
     Gowin_rPLL_100mhz pll_inst (
-        .clkout(rpll_clk), // 100 MHz output
+        .clkout(rpll_clk), // 47.25 MHz output
         .lock(pll_lock),   // PLL lock signal
-        .clkin(clk)        // 50 MHz input
+        .clkin(clk)        // 27 MHz input
     );
 
     // Synchronize reset with PLL lock

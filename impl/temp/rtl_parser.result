@@ -65,7 +65,7 @@
       "SubInsts" : [
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 36,
+        "InstLine" : 33,
         "InstName" : "gen_dsp[0].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
@@ -73,7 +73,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 36,
+        "InstLine" : 33,
         "InstName" : "gen_dsp[1].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
@@ -81,7 +81,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 36,
+        "InstLine" : 33,
         "InstName" : "gen_dsp[2].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
@@ -89,7 +89,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 36,
+        "InstLine" : 33,
         "InstName" : "gen_dsp[3].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
@@ -97,7 +97,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 36,
+        "InstLine" : 33,
         "InstName" : "gen_dsp[4].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
@@ -105,7 +105,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 50,
+        "InstLine" : 40,
         "InstName" : "mul_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
         "ModuleLine" : 2,
@@ -113,7 +113,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 56,
+        "InstLine" : 46,
         "InstName" : "add_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix _addition.sv",
         "ModuleLine" : 1,
@@ -121,7 +121,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 60,
+        "InstLine" : 50,
         "InstName" : "sub_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_subtraction.sv",
         "ModuleLine" : 1,
@@ -129,7 +129,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 64,
+        "InstLine" : 54,
         "InstName" : "conv_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
         "ModuleLine" : 2,
@@ -137,7 +137,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
-        "InstLine" : 70,
+        "InstLine" : 60,
         "InstName" : "dot_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.v",
         "ModuleLine" : 2,

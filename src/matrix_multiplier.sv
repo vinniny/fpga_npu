@@ -28,6 +28,7 @@ module matrix_multiplier (
             k <= 0; iter <= 0;
             dsp_ce <= 1;
         end else if (computing) begin
+            // Explicit combinational logic within sequential block
             case (iter)
                 0: begin
                     dsp_a0[0] <= {10'd0, a[0][k]}; dsp_b0[0] <= {10'd0, b[k][0]}; // c[0][0]
@@ -69,9 +70,9 @@ module matrix_multiplier (
                 end
             endcase
             if (k < 15) begin
-                k <= 4'(k + 1); // Explicitly cast to 4 bits
+                k <= 4'(k + 1);
             end else if (iter < 3) begin
-                iter <= 3'(iter + 1); // Explicitly cast to 3 bits
+                iter <= 3'(iter + 1);
                 k <= 0;
             end else begin
                 done <= 1;
