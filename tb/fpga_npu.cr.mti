@@ -1,16 +1,16 @@
-{C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_B.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_B.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module sram_B
-
-Top level modules:
-	sram_B
-
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv}
+{C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module matrix_convolution
 
 Top level modules:
 	matrix_convolution
+
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_B.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_B.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module sram_B
+
+Top level modules:
+	sram_B
 
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_addition.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_addition.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -377,13 +377,6 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	tb_spi_slave
 
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module Gowin_MULTADDALU
-
-Top level modules:
-	Gowin_MULTADDALU
-
 } {} {}} C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_sim.v {1 {vlog -work work -sv C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_sim.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling UDP mux2
@@ -707,6 +700,13 @@ Top level modules:
 	MIPI_DPHY_RX
 	CLKDIVG
 	PWRGRD
+
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Gowin_MULTADDALU
+
+Top level modules:
+	Gowin_MULTADDALU
 
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_C.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_C.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012

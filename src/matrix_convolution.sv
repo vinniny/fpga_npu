@@ -1,26 +1,25 @@
 (* use_dsp = "hard" *)
 module matrix_convolution (
-(* syn_keep = 1 *)     input logic clk, rst_n, start,
+    input logic clk, rst_n, start,
     input logic signed [7:0] input_tile [0:5][0:5],
     input logic signed [7:0] kernel [0:2][0:2],
-(* syn_keep = 1 *)     output logic signed [15:0] c [0:3][0:3],
-(* syn_keep = 1 *)     output logic signed [17:0] dsp_a0 [0:4], dsp_b0 [0:4],
-(* syn_keep = 1 *)     input logic signed [36:0] dsp_out [0:4],
-(* syn_keep = 1 *)     output logic dsp_ce,
-(* syn_keep = 1 *)     output logic done
+    output logic signed [15:0] c [0:3][0:3],
+    output logic signed [17:0] dsp_a0 [0:4], dsp_b0 [0:4],
+    input logic signed [36:0] dsp_out [0:4],
+    output logic dsp_ce,
+    output logic done
 );
     logic [2:0] m, n;
     logic [4:0] mul_count;
-(* syn_keep = 1 *)     logic computing, start_reg;
-(* syn_keep = 1 *)     logic signed [17:0] dsp_a0_pre [0:4], dsp_b0_pre [0:4];
+    logic computing, start_reg;
+    logic signed [17:0] dsp_a0_pre [0:4], dsp_b0_pre [0:4];
     logic signed [15:0] sum [0:3][0:3];
     logic [2:0] dsp_idx;
 
     assign dsp_ce = computing;
 
     // Register start signal on posedge clk with double sync
-(* syn_keep = 1 *)     logic start_d;
-// REVIEW: ensure proper 'end' for always block
+    logic start_d;
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             start_d <= 0;
@@ -32,7 +31,6 @@ module matrix_convolution (
     end
 
     // DSP input assignments
-// REVIEW: ensure proper 'end' for always block
     always_comb begin
         dsp_a0_pre = '{default: 0};
         dsp_b0_pre = '{default: 0};
@@ -83,7 +81,6 @@ module matrix_convolution (
     end
 
     // DSP input pipeline
-// REVIEW: ensure proper 'end' for always block
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             for (int i = 0; i < 5; i++) begin
@@ -97,7 +94,6 @@ module matrix_convolution (
     end
 
     // FSM and accumulation
-// REVIEW: ensure proper 'end' for always block
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             m <= 0; n <= 0; mul_count <= 0; computing <= 0; done <= 0;
@@ -108,7 +104,7 @@ module matrix_convolution (
                     c[x][y] <= 0;
                 end
         end else begin
-            if (start_reg && !computing && !done) begin
+if (start_reg && !computing) begin  // start FSM
                 computing <= 1;
                 m <= 0; n <= 0; mul_count <= 0; done <= 0;
                 dsp_idx <= 0;
@@ -120,7 +116,7 @@ module matrix_convolution (
             end else if (computing) begin
                 mul_count <= mul_count + 1;
                 if (mul_count >= 3 && mul_count < 12) begin
-                    sum[m][n] <= sum[m][n] + $signed(dsp_out[dsp_idx][15:0]);
+sum[m][n] <= sum[m][n] + $signed(dsp_out[dsp_idx]);  // full 37-bit use
                     dsp_idx <= (dsp_idx == 4) ? 0 : dsp_idx + 1;
                 end
                 if (mul_count == 12) begin

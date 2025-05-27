@@ -15,9 +15,6 @@
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_A.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_B.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_C.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_gowin_multaddalu.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_gowin_rpll.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_addition.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_convolution.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.v" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv" type="verilog"/>
