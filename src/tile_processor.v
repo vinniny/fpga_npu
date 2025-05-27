@@ -13,7 +13,7 @@ module tile_processor (
     typedef enum logic [1:0] {IDLE, LOAD, COMPUTE, DONE} state_t;
     state_t state;
     logic [7:0] a_tile [0:3][0:15], b_tile [0:15][0:3];
-    logic [7:0] add_a [0:3][0:3], add_b [0:3][0:3];
+    logic [7:0] add_a [0:3][0:3], add_b [0:3][0:3]; // Fixed: [7:0] instead of [7:8]
     logic [7:0] conv_input [0:5][0:5], conv_kernel [0:2][0:2];
     logic [7:0] dot_a [0:15], dot_b [0:15];
     logic [15:0] mul_result [0:3][0:3], add_result [0:3][0:3], sub_result [0:3][0:3], conv_result [0:3][0:3];

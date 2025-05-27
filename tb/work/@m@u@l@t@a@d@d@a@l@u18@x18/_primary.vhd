@@ -1,0 +1,67 @@
+library verilog;
+use verilog.vl_types.all;
+entity MULTADDALU18X18 is
+    generic(
+        A0REG           : vl_logic := Hi0;
+        A1REG           : vl_logic := Hi0;
+        B0REG           : vl_logic := Hi0;
+        B1REG           : vl_logic := Hi0;
+        CREG            : vl_logic := Hi0;
+        PIPE0_REG       : vl_logic := Hi0;
+        PIPE1_REG       : vl_logic := Hi0;
+        OUT_REG         : vl_logic := Hi0;
+        ASIGN0_REG      : vl_logic := Hi0;
+        ASIGN1_REG      : vl_logic := Hi0;
+        ACCLOAD_REG0    : vl_logic := Hi0;
+        ACCLOAD_REG1    : vl_logic := Hi0;
+        BSIGN0_REG      : vl_logic := Hi0;
+        BSIGN1_REG      : vl_logic := Hi0;
+        SOA_REG         : vl_logic := Hi0;
+        B_ADD_SUB       : vl_logic := Hi0;
+        C_ADD_SUB       : vl_logic := Hi0;
+        MULTADDALU18X18_MODE: integer := 0;
+        MULT_RESET_MODE : string  := "SYNC"
+    );
+    port(
+        DOUT            : out    vl_logic_vector(53 downto 0);
+        CASO            : out    vl_logic_vector(54 downto 0);
+        SOA             : out    vl_logic_vector(17 downto 0);
+        SOB             : out    vl_logic_vector(17 downto 0);
+        A0              : in     vl_logic_vector(17 downto 0);
+        B0              : in     vl_logic_vector(17 downto 0);
+        A1              : in     vl_logic_vector(17 downto 0);
+        B1              : in     vl_logic_vector(17 downto 0);
+        C               : in     vl_logic_vector(53 downto 0);
+        SIA             : in     vl_logic_vector(17 downto 0);
+        SIB             : in     vl_logic_vector(17 downto 0);
+        CASI            : in     vl_logic_vector(54 downto 0);
+        ACCLOAD         : in     vl_logic;
+        ASEL            : in     vl_logic_vector(1 downto 0);
+        BSEL            : in     vl_logic_vector(1 downto 0);
+        ASIGN           : in     vl_logic_vector(1 downto 0);
+        BSIGN           : in     vl_logic_vector(1 downto 0);
+        CLK             : in     vl_logic;
+        CE              : in     vl_logic;
+        RESET           : in     vl_logic
+    );
+    attribute mti_svvh_generic_type : integer;
+    attribute mti_svvh_generic_type of A0REG : constant is 1;
+    attribute mti_svvh_generic_type of A1REG : constant is 1;
+    attribute mti_svvh_generic_type of B0REG : constant is 1;
+    attribute mti_svvh_generic_type of B1REG : constant is 1;
+    attribute mti_svvh_generic_type of CREG : constant is 1;
+    attribute mti_svvh_generic_type of PIPE0_REG : constant is 1;
+    attribute mti_svvh_generic_type of PIPE1_REG : constant is 1;
+    attribute mti_svvh_generic_type of OUT_REG : constant is 1;
+    attribute mti_svvh_generic_type of ASIGN0_REG : constant is 1;
+    attribute mti_svvh_generic_type of ASIGN1_REG : constant is 1;
+    attribute mti_svvh_generic_type of ACCLOAD_REG0 : constant is 1;
+    attribute mti_svvh_generic_type of ACCLOAD_REG1 : constant is 1;
+    attribute mti_svvh_generic_type of BSIGN0_REG : constant is 1;
+    attribute mti_svvh_generic_type of BSIGN1_REG : constant is 1;
+    attribute mti_svvh_generic_type of SOA_REG : constant is 1;
+    attribute mti_svvh_generic_type of B_ADD_SUB : constant is 1;
+    attribute mti_svvh_generic_type of C_ADD_SUB : constant is 1;
+    attribute mti_svvh_generic_type of MULTADDALU18X18_MODE : constant is 1;
+    attribute mti_svvh_generic_type of MULT_RESET_MODE : constant is 1;
+end MULTADDALU18X18;

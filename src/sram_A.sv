@@ -1,10 +1,10 @@
 module sram_A (
     input  logic        clk,
     input  logic        ce,
-    input  logic        we,
-    input  logic [9:0]  addr,
+(* syn_keep = 1 *)     input  logic        we,
+(* syn_keep = 1 *)     input  logic [9:0]  addr,
     input  logic [7:0]  din,
-    output logic [7:0]  dout
+(* syn_keep = 1 *)     output logic [7:0]  dout
 );
     logic [7:0] mem [0:1023];
 

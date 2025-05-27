@@ -1,0 +1,61 @@
+library verilog;
+use verilog.vl_types.all;
+entity I3C is
+    generic(
+        ADDRESS         : vl_logic_vector(0 to 6) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0)
+    );
+    port(
+        AAC             : in     vl_logic;
+        AAO             : out    vl_logic;
+        AAS             : in     vl_logic;
+        ACC             : in     vl_logic;
+        ACKHS           : in     vl_logic;
+        ACKLS           : in     vl_logic;
+        ACO             : out    vl_logic;
+        ACS             : in     vl_logic;
+        ADDRS           : in     vl_logic;
+        CE              : in     vl_logic;
+        CLK             : in     vl_logic;
+        CMC             : in     vl_logic;
+        CMO             : out    vl_logic;
+        CMS             : in     vl_logic;
+        DI              : in     vl_logic_vector(7 downto 0);
+        DO              : out    vl_logic_vector(7 downto 0);
+        DOBUF           : out    vl_logic_vector(7 downto 0);
+        LGYC            : in     vl_logic;
+        LGYO            : out    vl_logic;
+        LGYS            : in     vl_logic;
+        PARITYERROR     : out    vl_logic;
+        RECVDHS         : in     vl_logic;
+        RECVDLS         : in     vl_logic;
+        RESET           : in     vl_logic;
+        SCLI            : in     vl_logic;
+        SCLO            : out    vl_logic;
+        SCLOEN          : out    vl_logic;
+        SCLPULLO        : out    vl_logic;
+        SCLPULLOEN      : out    vl_logic;
+        SDAI            : in     vl_logic;
+        SDAO            : out    vl_logic;
+        SDAOEN          : out    vl_logic;
+        SDAPULLO        : out    vl_logic;
+        SDAPULLOEN      : out    vl_logic;
+        SENDAHS         : in     vl_logic;
+        SENDALS         : in     vl_logic;
+        SENDDHS         : in     vl_logic;
+        SENDDLS         : in     vl_logic;
+        SIC             : in     vl_logic;
+        SIO             : out    vl_logic;
+        STRTC           : in     vl_logic;
+        STRTO           : out    vl_logic;
+        STRTS           : in     vl_logic;
+        STATE           : out    vl_logic_vector(7 downto 0);
+        STRTHDS         : in     vl_logic;
+        STOPC           : in     vl_logic;
+        STOPO           : out    vl_logic;
+        STOPS           : in     vl_logic;
+        STOPSUS         : in     vl_logic;
+        STOPHDS         : in     vl_logic
+    );
+    attribute mti_svvh_generic_type : integer;
+    attribute mti_svvh_generic_type of ADDRESS : constant is 1;
+end I3C;
