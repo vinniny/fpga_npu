@@ -8,24 +8,23 @@
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_rpll\gowin_rpll.v" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix _addition.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.v" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_multiplier.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_A.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_B.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_C.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_convolution.sv" type="verilog"/>
-        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.v" type="verilog"/>
+        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv" type="verilog"/>
         <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv" type="verilog"/>
+        <File path="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.sv" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
         <Option type="global_freq" value="50.000"/>
         <Option type="looplimit" value="2000"/>
         <Option type="output_file" value="C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\gwsynthesis\fpga_npu.vg"/>
-        <Option type="print_all_synthesis_warning" value="0"/>
+        <Option type="print_all_synthesis_warning" value="1"/>
         <Option type="ram_rw_check" value="0"/>
         <Option type="top_module" value="top"/>
         <Option type="vcc" value="1.2"/>

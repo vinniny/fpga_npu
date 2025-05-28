@@ -12,6 +12,7 @@ module matrix_convolution (
     logic [2:0] m, n;
     logic [4:0] mul_count;
     logic computing, start_reg;
+    logic [3:0] mac_idx;
     logic signed [17:0] dsp_a0_pre [0:4], dsp_b0_pre [0:4];
     logic signed [15:0] sum [0:3][0:3];
     logic [2:0] dsp_idx;
@@ -34,7 +35,7 @@ module matrix_convolution (
     always_comb begin
         dsp_a0_pre = '{default: 0};
         dsp_b0_pre = '{default: 0};
-        if (computing && mul_count < 9) begin
+        if (computing && mac_idx < 9) begin
             case (mul_count)
                 0: begin
                     dsp_a0_pre[0] = {{10{input_tile[m][n][7]}}, input_tile[m][n]};
@@ -97,15 +98,16 @@ module matrix_convolution (
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             m <= 0; n <= 0; mul_count <= 0; computing <= 0; done <= 0;
-            dsp_idx <= 0;
+            dsp_idx <= 0; mac_idx <= 0;
             for (int x = 0; x < 4; x++)
                 for (int y = 0; y < 4; y++) begin
                     sum[x][y] <= 0;
                     c[x][y] <= 0;
                 end
         end else begin
-if (start_reg && !computing) begin  // start FSM
+            if (start_reg && !computing) begin
                 computing <= 1;
+                mac_idx <= 0;
                 m <= 0; n <= 0; mul_count <= 0; done <= 0;
                 dsp_idx <= 0;
                 for (int x = 0; x < 4; x++)
@@ -115,8 +117,9 @@ if (start_reg && !computing) begin  // start FSM
                     end
             end else if (computing) begin
                 mul_count <= mul_count + 1;
+                mac_idx <= mac_idx + 1;
                 if (mul_count >= 3 && mul_count < 12) begin
-sum[m][n] <= sum[m][n] + $signed(dsp_out[dsp_idx]);  // full 37-bit use
+                    sum[m][n] <= sum[m][n] + $signed(dsp_out[dsp_idx]);
                     dsp_idx <= (dsp_idx == 4) ? 0 : dsp_idx + 1;
                 end
                 if (mul_count == 12) begin
@@ -124,14 +127,16 @@ sum[m][n] <= sum[m][n] + $signed(dsp_out[dsp_idx]);  // full 37-bit use
                     sum[m][n] <= 0;
                     mul_count <= 0;
                     dsp_idx <= 0;
+                    mac_idx <= 0;
                     if (m < 3) begin
                         m <= m + 1;
                     end else if (n < 3) begin
                         m <= 0;
                         n <= n + 1;
                     end else begin
-                        done <= 1;
+                        c[m][n] <= sum[m][n];
                         computing <= 0;
+                        done <= 1;
                     end
                 end
             end

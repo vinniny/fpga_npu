@@ -18,10 +18,6 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.v",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
    "Type" : "verilog"
   },
@@ -46,11 +42,7 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_convolution.sv",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.v",
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
    "Type" : "verilog"
   },
   {
@@ -59,6 +51,10 @@
   },
   {
    "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv",
    "Type" : "verilog"
   }
  ],
