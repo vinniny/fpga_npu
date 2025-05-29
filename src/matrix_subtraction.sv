@@ -7,35 +7,43 @@ module matrix_subtraction (
 );
     logic [2:0] i, j;
     logic computing;
-    logic [15:0] c_next [0:3][0:3];
+    logic [15:0] c_next [0:3][0:3]; // Declare c_next
 
-    // Rewritten combinational logic
+    // Compute subtraction directly
     always_comb begin
         for (int x = 0; x < 4; x++)
             for (int y = 0; y < 4; y++)
-                c_next[x][y] = computing && x == i && y == j ? a[x][y] - b[x][y] : c[x][y];
+                c_next[x][y] = $signed({1'b0, a[x][y]}) - $signed({1'b0, b[x][y]});
     end
 
-    // Unchanged sequential logic
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             i <= 0; j <= 0; done <= 0; computing <= 0;
             for (int x = 0; x < 4; x++)
                 for (int y = 0; y < 4; y++)
                     c[x][y] <= 0;
-        end else if (start && !computing) begin
-            computing <= 1;
-            i <= 0; j <= 0;
-        end else if (computing) begin
-            if (i < 4 && j < 4) begin
-                c[i][j] <= c_next[i][j];
-                j <= 3'(j + 1);
-            end else if (i < 4) begin
-                i <= 3'(i + 1);
-                j <= 0;
-            end else begin
-                done <= 1;
-                computing <= 0;
+        end else begin
+            if (start && !computing && !done) begin
+                computing <= 1;
+                i <= 0; j <= 0;
+                for (int x = 0; x < 4; x++)
+                    for (int y = 0; y < 4; y++)
+                        c[x][y] <= 0; // Clear c on start
+            end else if (computing) begin
+                if (i < 4 && j < 4) begin
+                    c[i][j] <= c_next[i][j];
+                    j <= j + 1;
+                    if (j == 3) begin
+                        j <= 0;
+                        i <= i + 1;
+                    end
+                end
+                if (i == 3 && j == 3) begin
+                    done <= 1;
+                    computing <= 0;
+                end
+            end else if (done && !start) begin
+                done <= 0; // Clear done when start is low
             end
         end
     end

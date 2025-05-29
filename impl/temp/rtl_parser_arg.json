@@ -10,15 +10,11 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix _addition.sv",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv",
    "Type" : "verilog"
   },
   {
@@ -54,7 +50,7 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv",
+   "Path" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_addition.sv",
    "Type" : "verilog"
   }
  ],

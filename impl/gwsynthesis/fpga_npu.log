@@ -2,9 +2,8 @@ GowinSynthesis start
 Running parser ...
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_multaddalu\gowin_multaddalu.v'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_rpll\gowin_rpll.v'
-Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix _addition.sv'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv'
-Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_multiplier.sv'
+Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.sv'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_A.sv'
@@ -13,13 +12,14 @@ Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv'
 Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv'
-Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.sv'
+Analyzing Verilog file 'C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_addition.sv'
 Compiling module 'top'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top.sv":1)
 Compiling module 'Gowin_rPLL'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_rpll\gowin_rpll.v":10)
 Compiling module 'top_npu_system'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\top_npu_system.sv":1)
 Compiling module 'spi_slave'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv":1)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv":26)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv":65)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv":72)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv":79)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\spi_slave.sv":114)
 Compiling module 'sram_A'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_A.sv":1)
 Extracting RAM for identifier 'mem'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_A.sv":9)
 Compiling module 'sram_B'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_B.sv":1)
@@ -28,9 +28,10 @@ Compiling module 'sram_C'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\s
 Extracting RAM for identifier 'mem'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\sram_C.sv":9)
 Compiling module 'tile_processor'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":2)
 Compiling module 'Gowin_MULTADDALU'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\gowin_multaddalu\gowin_multaddalu.v":10)
-Compiling module 'matrix_multiplier'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_multiplier.sv":2)
-Compiling module 'matrix_addition'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix _addition.sv":1)
+Compiling module 'matrix_addition'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_addition.sv":1)
 Compiling module 'matrix_subtraction'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv":1)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv":35)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_subtraction.sv":38)
 Compiling module 'matrix_convolution'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv":2)
 WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv":119)
 WARN  (EX3791) : Expression size 5 truncated to fit in target size 4("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv":120)
@@ -40,25 +41,25 @@ WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\t
 WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_convolution.sv":135)
 Compiling module 'matrix_dot'("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.sv":2)
 WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\matrix_dot.sv":37)
-WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":187)
-WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":188)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":193)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":194)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":196)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":216)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":217)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":219)
-WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":233)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":241)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":242)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":244)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":263)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":264)
-WARN  (EX3791) : Expression size 16 truncated to fit in target size 8("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":286)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":287)
-WARN  (EX3791) : Expression size 16 truncated to fit in target size 8("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":299)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":300)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":302)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":192)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":193)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":198)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":199)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":201)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":221)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":222)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":224)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":238)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":246)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":247)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":249)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":268)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":269)
+WARN  (EX3791) : Expression size 16 truncated to fit in target size 8("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":291)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":292)
+WARN  (EX3791) : Expression size 16 truncated to fit in target size 8("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":304)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":305)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tile_processor.sv":307)
 NOTE  (EX0101) : Current top module is "top"
 [5%] Running netlist conversion ...
 Running device independent optimization ...
@@ -77,7 +78,7 @@ Running technical mapping ...
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
 [95%] Generate netlist file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\gwsynthesis\fpga_npu.vg" completed
-WARN  (CK3000) : Can't calculate clocks' relationship between: "pll_inst/rpll_inst/CLKOUT.default_gen_clk" and "sclk"
 WARN  (CK3000) : Can't calculate clocks' relationship between: "sclk" and "pll_inst/rpll_inst/CLKOUT.default_gen_clk"
+WARN  (CK3000) : Can't calculate clocks' relationship between: "pll_inst/rpll_inst/CLKOUT.default_gen_clk" and "sclk"
 [100%] Generate report file "C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\impl\gwsynthesis\fpga_npu_syn.rpt.html" completed
 GowinSynthesis finish

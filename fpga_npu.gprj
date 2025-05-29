@@ -7,10 +7,9 @@
     <FileList>
         <File path="src/gowin_multaddalu/gowin_multaddalu.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
-        <File path="src/matrix _addition.sv" type="file.verilog" enable="1"/>
+        <File path="src/matrix_addition.sv" type="file.verilog" enable="1"/>
         <File path="src/matrix_convolution.sv" type="file.verilog" enable="1"/>
         <File path="src/matrix_dot.sv" type="file.verilog" enable="1"/>
-        <File path="src/matrix_multiplier.sv" type="file.verilog" enable="1"/>
         <File path="src/matrix_subtraction.sv" type="file.verilog" enable="1"/>
         <File path="src/spi_slave.sv" type="file.verilog" enable="1"/>
         <File path="src/sram_A.sv" type="file.verilog" enable="1"/>
@@ -21,7 +20,6 @@
         <File path="src/tb_matrix_addition.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_matrix_convolution_debug.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_matrix_dot.sv" type="file.verilog" enable="0"/>
-        <File path="src/tb_matrix_multiplier.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_matrix_subtraction.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_spi_slave.sv" type="file.verilog" enable="0"/>
         <File path="src/tb_sram_A.sv" type="file.verilog" enable="0"/>

@@ -26,6 +26,13 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	tb_matrix_convolution_debug
 
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_addition.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_addition.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module matrix_addition
+
+Top level modules:
+	matrix_addition
+
 } {} {}} C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_tsim.v {1 {vlog -work work -sv C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_tsim.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling UDP mux2
@@ -342,12 +349,12 @@ Top level modules:
 	FLASH96KA
 	CLKDIVG
 
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix _addition.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix _addition.sv}
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module matrix_addition
+-- Compiling module top_npu_system
 
 Top level modules:
-	matrix_addition
+	top_npu_system
 
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_B.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_B.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -356,13 +363,6 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	tb_sram_B
 
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module top_npu_system
-
-Top level modules:
-	top_npu_system
-
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_subtraction.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_subtraction.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module matrix_subtraction
@@ -370,24 +370,19 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	matrix_subtraction
 
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv} {0 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv}
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module matrix_dot
-** Error: C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv(33): near "[": syntax error, unexpected '[', expecting ';'
 
-} {4.0 5.0} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv}
+Top level modules:
+	matrix_dot
+
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module sram_A
 
 Top level modules:
 	sram_A
-
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_spi_slave.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_spi_slave.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module tb_spi_slave
-
-Top level modules:
-	tb_spi_slave
 
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -720,6 +715,13 @@ Top level modules:
 	CLKDIVG
 	PWRGRD
 
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module tile_processor
+
+Top level modules:
+	tile_processor
+
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_C.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_C.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module sram_C
@@ -733,13 +735,6 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 
 Top level modules:
 	tb_gowin_multaddalu
-
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module spi_slave
-
-Top level modules:
-	spi_slave
 
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_rpll/gowin_rpll.v} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_rpll/gowin_rpll.v}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -762,13 +757,6 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	tb_matrix_subtraction
 
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_multiplier.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_multiplier.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module tb_matrix_multiplier
-
-Top level modules:
-	tb_matrix_multiplier
-
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_A.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_A.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module tb_sram_A
@@ -782,6 +770,13 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 
 Top level modules:
 	tb_top
+
+} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_dot.sv} {1 {vlog -work work -sv {C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_dot.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module tb_matrix_dot
+
+Top level modules:
+	tb_matrix_dot
 
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_rpll.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_rpll.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -803,13 +798,6 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 
 Top level modules:
 	tb_tile_processor
-
-} {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module matrix_multiplier
-
-Top level modules:
-	matrix_multiplier
 
 } {} {}} {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv} {1 {vlog -work work -sv {C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012

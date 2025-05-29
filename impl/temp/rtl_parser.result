@@ -65,63 +65,55 @@
       "SubInsts" : [
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 50,
-        "InstName" : "gen_dsp[0].dsp_inst",
+        "InstLine" : 51,
+        "InstName" : "[0].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_MULTADDALU"
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 50,
-        "InstName" : "gen_dsp[1].dsp_inst",
+        "InstLine" : 51,
+        "InstName" : "[1].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_MULTADDALU"
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 50,
-        "InstName" : "gen_dsp[2].dsp_inst",
+        "InstLine" : 51,
+        "InstName" : "[2].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_MULTADDALU"
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 50,
-        "InstName" : "gen_dsp[3].dsp_inst",
+        "InstLine" : 51,
+        "InstName" : "[3].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_MULTADDALU"
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 50,
-        "InstName" : "gen_dsp[4].dsp_inst",
+        "InstLine" : 51,
+        "InstName" : "[4].dsp_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_MULTADDALU"
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 57,
-        "InstName" : "mul_inst",
-        "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_multiplier.sv",
-        "ModuleLine" : 2,
-        "ModuleName" : "matrix_multiplier"
-       },
-       {
-        "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 63,
+        "InstLine" : 58,
         "InstName" : "add_inst",
-        "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix _addition.sv",
+        "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_addition.sv",
         "ModuleLine" : 1,
         "ModuleName" : "matrix_addition"
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 67,
+        "InstLine" : 62,
         "InstName" : "sub_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_subtraction.sv",
         "ModuleLine" : 1,
@@ -129,7 +121,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 71,
+        "InstLine" : 66,
         "InstName" : "conv_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv",
         "ModuleLine" : 2,
@@ -137,7 +129,7 @@
        },
        {
         "InstFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv",
-        "InstLine" : 77,
+        "InstLine" : 72,
         "InstName" : "dot_inst",
         "ModuleFile" : "C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv",
         "ModuleLine" : 2,

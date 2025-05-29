@@ -2,97 +2,170 @@
 
 ## Overview
 
-This project implements a Neural Processing Unit (NPU) on the Sipeed Tang Nano 9K (Gowin GW1NR-9C FPGA) for matrix operations, including multiplication, convolution, addition, subtraction, and dot product. Designed for a multi-FPGA system, it achieves \~0.384 GMAC/s per FPGA at 50 MHz (\~1.536 GMAC/s across 4 FPGAs) with a 16×16 matrix size and 4x4 tiling strategy.
+This project implements a Neural Processing Unit (NPU) on the Sipeed Tang Nano 9K (Gowin GW1NR-9C FPGA) for matrix operations, including convolution, addition, subtraction, and dot product. Designed for a multi-FPGA system, it targets efficient matrix processing with a 16×16 matrix size and a 4x4 tiling strategy, operating at a system clock of 47.25 MHz and an SPI clock of 50 MHz. The project is developed using Gowin EDA (V1.9.11.02) and verified with ModelSim 10.1d.
 
 ## Features
 
 - **FPGA**: Gowin GW1NR-9C (8,640 LUTs, 5 DSP blocks, 468 Kb BRAM, 71 GPIOs).
-- **Matrix Size**: 16×16 (512 MACs for multiplication, 144 MACs for 3×3 convolution).
+- **Matrix Size**: 16×16 (optimized for low resource usage).
 - **Precision**: 8-bit inputs, 16-bit outputs, 24-bit accumulators.
-- **Memory**: 3 SRAMs (6 Kb, \~1.28% of 468 Kb).
-- **Clock**: 50 MHz (Fmax 56.811 MHz), with potential for 100 MHz (\~0.768 GMAC/s per FPGA).
-- **Operations**: Matrix multiplication, convolution, addition, subtraction, dot product.
-- **Resource Usage**: \~3,201 LUTs (41%), 2,757 registers (42%), 3 BSRAMs (12%), 5 DSPs.
+- **Memory**: Utilizes Block SRAM (BSRAM) for matrix storage.
+- **Clocks**:
+  - System clock: 47.25 MHz (21.164 ns period).
+  - SPI clock: 50 MHz (20 ns period).
+- **Operations**: Matrix convolution, addition, subtraction, dot product.
+- **SPI Interface**: `spi_slave` module for data transfer.
+- **Resource Usage**: ~3,201 LUTs (41%), ~2,757 registers (42%), 3 BSRAMs (12%), 5 DSPs.
+- **Timing**: Meets 47.25 MHz (slack ~3.691 ns).
 
 ## Project Structure
 
-- **Source Files**:
-  - `matrix_multiplier.sv`: Matrix multiplication (4x4 tiles, 5 DSPs).
-  - `matrix_convolution.sv`: 3×3 convolution (6x6 input tile, 5 DSPs).
-  - `matrix_addition.sv`, `matrix_subtraction.sv`: Element-wise operations.
-  - `matrix_dot.v`: Dot product (LUT-based).
-  - `tile_processor.v`: Orchestrates operations with SRAM access.
-  - `spi_slave.sv`: SPI interface for data transfer.
-  - `top.sv`, `top_npu_system.sv`: Top-level modules.
-  - `sram_A.sv`, `sram_B.sv`, `sram_C.sv`: SRAM modules.
-  - `gowin_multaddalu.v`: DSP primitive.
-- **Project File**: `fpga_npu.gprj`
-- **Constraints**: `fpga_npu.cst` (50 MHz clock, 5 DSPs max).
+- **src/**: Source files for the NPU design
+  - `spi_slave.sv`: SPI slave module for communication.
+  - `tile_processor.sv`: Core tile processing unit integrating matrix operations.
+  - `matrix_subtraction.sv`: Matrix subtraction module (verified with 16,000/16,000 checks).
+  - `matrix_addition.sv`: Matrix addition module.
+  - `matrix_convolution.sv`: Matrix convolution module.
+  - `matrix_dot.sv`: Matrix dot product module.
+  - `top_npu_system.sv`: Top-level module integrating components.
+  - `tb_spi_slave.sv`: Testbench for `spi_slave` (1000 test cases).
+  - `tb_matrix_convolution_debug.sv`: Testbench for matrix operations and integration.
+- **constraints/**: Constraint files
+  - `fpga_npu.cst`: Physical constraints (e.g., SPI pin 52 per **PR1014**).
+- **project/**: Gowin EDA project file
+  - `fpga_npu.gprj`: Project configuration (excludes `matrix_multiplier.sv`).
 
-## Setup Instructions
+**Note**: The `matrix_multiplier.sv` module is excluded from the current design to optimize resource usage and meet timing constraints.
 
-### Prerequisites
+## Prerequisites
 
 - **Hardware**: Sipeed Tang Nano 9K (GW1NR-LV9QN88PC6/I5).
 - **Software**: Gowin FPGA Designer v1.9.11.02 (64-bit).
-- **Tools**: Verilog/SystemVerilog simulator (e.g., ModelSim, Vivado Simulator).
+- **Simulation Tool**: ModelSim ALTERA v10.1d.
+- **Language**: SystemVerilog 2017.
+- **Library**: Gowin FPGA simulation library (`prim_tsim.v`) at `C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_tsim.v`.
+- **OS**: Windows (project path: `C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/`).
 
-### Installation
+## Setup Instructions
 
-1. **Clone Repository**:
-
+1. **Clone the Repository**:
    ```bash
-   git clone <repository_url>
+   git clone <repository-url>
    cd multi-fpga-npu
    ```
-2. **Open Project**:
-   - Launch Gowin FPGA Designer.
-   - Open `fpga_npu.gprj`.
-   - Verify device: GW1NR-LV9QN88PC6/I5.
-3. **Add Constraints**:
-   - Include `fpga_npu.cst` in Project &gt; Constraints &gt; Add File.
-   - Contents:
 
+2. **Install Gowin EDA**:
+   - Download and install Gowin FPGA Designer v1.9.11.02 from [Gowin Semiconductor](https://www.gowinsemi.com/en/support/).
+   - Ensure the library path `C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/` is accessible.
+
+3. **Install ModelSim**:
+   - Install ModelSim ALTERA v10.1d.
+   - Configure for SystemVerilog 2017 support.
+
+4. **Directory Setup**:
+   - Place source files in `C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/`.
+   - Include `fpga_npu.cst` with:
      ```verilog
-     create_clock -name clk -period 20 [get_ports clk] // 50 MHz
-     create_clock -name sclk -period 20 [get_ports sclk]
+     create_clock -name clk -period 21.164 [get_ports clk] // 47.25 MHz
+     create_clock -name sclk -period 20 [get_ports sclk] // 50 MHz
      set_attribute -name MAX_DSP -value 5 -type integer
+     IO_LOC "sclk" 52; // SPI pin 52 per PR1014
      ```
+   - Verify `fpga_npu.gprj` excludes `matrix_multiplier.sv`.
 
-### Synthesis and Programming
+## Simulation
 
-1. **Synthesize**:
+### SPI Slave Simulation
+
+1. **Compile and Run**:
+   ```tcl
+   vlib work
+   vlog -work work C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_tsim.v
+   vlog -work work ../src/spi_slave.sv
+   vlog -work work ../src/tb_spi_slave.sv
+   vsim -voptargs=+acc work.tb_spi_slave
+   add wave -r /*
+   run -all
+   ```
+2. **Expected Output**:
+   - Runs 1000 test cases, verifying SPI outputs (`cmd`, `tile_i`, `tile_j`, `op_code`, `data_in`) and `miso`.
+   - Success: `Test completed: 2000/2000 checks passed` (~2.4 ms).
+   - Debug: If failures occur, inspect `state`, `bit_cnt`, `valid_sclk`, `valid_sync2`, `data_out_sync2`, `miso`, `shift_reg` in waveforms.
+
+### Tile Processor Simulation
+
+1. **Compile and Run**:
+   ```tcl
+   vlib work
+   vlog -work work C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_tsim.v
+   vlog -work work ../src/matrix_convolution.sv
+   vlog -work work ../src/matrix_addition.sv
+   vlog -work work ../src/matrix_subtraction.sv
+   vlog -work work ../src/matrix_dot.sv
+   vlog -work work ../src/spi_slave.sv
+   vlog -work work ../src/tile_processor.sv
+   vlog -work work ../src/tb_matrix_convolution_debug.sv
+   vsim -voptargs=+acc work.tb_matrix_convolution_debug
+   run -all
+   ```
+2. **Expected Output**:
+   - Verifies matrix operations, expecting `16000/16000 checks passed`.
+   - Test `tb_npu_top` (if available) for `SUB` and `MUL` operations (`final_result=0` for `MUL`).
+
+## Synthesis and Programming
+
+1. **Open Project**:
+   - Launch Gowin FPGA Designer and open `fpga_npu.gprj`.
+   - Confirm device: GW1NR-LV9QN88PC6/I5.
+
+2. **Apply Constraints**:
+   - Ensure `fpga_npu.cst` is included with clock definitions and SPI pin 52 assignment (**PR1014**).
+
+3. **Synthesize**:
    - Run synthesis in Gowin FPGA Designer.
-   - Verify no warnings/errors (e.g., EX3791, RP0002, RP0006).
-   - Check resource usage: \~3,201 LUTs, 5 DSPs, 3 BSRAMs.
-2. **Program FPGA**:
-   - Generate bitstream.
+   - Check `fpga_npu_syn.rpt.html` for timing (expected slack ~3.691 ns).
+   - Verify resource usage: ~3,201 LUTs, ~2,757 registers, 3 BSRAMs, 5 DSPs.
+   - Confirm no errors (**EX3791**, **EX3784**, **EX2442**, **EX3630**, **EX3147**).
+
+4. **Program FPGA**:
+   - Generate bitstream in Gowin FPGA Designer.
    - Program the Tang Nano 9K using Gowin Programmer.
-3. **Test**:
-   - Use SPI commands to input 16×16 matrices.
-   - Verify operations (multiplication, convolution, etc.) via outputs.
+
+5. **Test**:
+   - Use SPI commands to input 16×16 matrices via `spi_slave`.
+   - Verify matrix operations (convolution, subtraction, etc.) via outputs.
 
 ## Achievements
 
-- **Resolved Errors**:
-  - **RP0006**: Reduced logic from 12,308 to \~3,201 LUTs by shrinking matrix size to 16×16 and optimizing tiling.
-  - **RP0002**: Limited DSPs to 5 using explicit instantiation and constraints.
-- **Eliminated Warnings**:
-  - Resolved all **EX3791** truncation warnings by adjusting bit-widths (`iter`, `m`, `n` to 3 bits; `i`, `j`, `k` to 5 bits) and explicit casting (e.g., `k <= 4'(k + 1)`).
-- **Performance**: Achieved \~0.384 GMAC/s at 50 MHz, with potential for \~0.768 GMAC/s at 100 MHz.
-- **Timing**: Meets 50 MHz (critical path \~17.928 ns, slack 2.398 ns, Fmax 56.811 MHz).
+- **Simulation Success**:
+  - `matrix_subtraction.sv`: Achieved 16,000/16,000 checks passed at 47.25 MHz.
+  - `spi_slave.sv`: Ongoing optimization to achieve 2000/2000 checks in `tb_spi_slave`.
+- **Resolved Issues**:
+  - **PR1014**: SPI pin 52 correctly assigned in `fpga_npu.cst`.
+  - **CT1135**: Optimized `matrix_subtraction` for 47.25 MHz timing.
+  - **CK3000**: Ensured robust clock domain crossing in `spi_slave` synchronization.
+  - **EX3784**, **EX2442**, **EX3630**, **EX3147**, **EX3791**: Addressed through synthesis constraints and module updates.
+- **Resource Optimization**: Reduced LUT usage to ~41% by excluding `matrix_multiplier.sv` and optimizing tiling.
+- **Timing**: Meets 47.25 MHz with sufficient slack (~3.691 ns).
+
+## Known Issues
+
+- **SPI Slave Verification**: Recent `tb_spi_slave` runs show 9/2000 checks passed, indicating issues with `miso` timing and SPI outputs. Under active debug with waveform analysis (`bit_cnt`, `state`, `shift_reg`).
+- **Multi-FPGA Coordination**: Not yet tested; requires `tb_npu_top` for validation.
 
 ## Future Steps
 
-- **100 MHz Optimization**: Implement PLL to achieve \~0.768 GMAC/s per FPGA (\~3.072 GMAC/s for 4 FPGAs).
-- **Hardware Testing**: Validate multi-FPGA coordination with real-world neural network workloads.
-- **Expand Operations**: Add support for additional layers (e.g., ReLU, pooling).
-- External Host: Using DE-10 or DE-2 with RISC-V softcore for the main host.
+- **SPI Slave Optimization**: Achieve 2000/2000 checks in `tb_spi_slave` by refining `miso` timing and `shift_reg` capture.
+- **100 MHz Operation**: Implement PLL to increase clock to 100 MHz, potentially doubling performance.
+- **Multi-FPGA Testing**: Validate coordination across multiple Tang Nano 9K boards using `top_npu_system`.
+- **Additional Operations**: Integrate ReLU, pooling, or other neural network layers.
+- **External Host**: Develop interface with DE-10 or DE-2 board using RISC-V softcore for data orchestration.
 
 ## Acknowledgments
 
-- Built with Gowin FPGA Designer and Sipeed Tang Nano 9K.
+- Built with Gowin FPGA Designer v1.9.11.02 and Sipeed Tang Nano 9K.
+- References: *Gowin FPGA Designer User Manual* (V1.9.11, 2024), *Gowin Synthesis Constraints Guide* (2024).
 
 ---
 
-*Last Updated: May 20, 2025*
+*Last Updated: May 29, 2025*

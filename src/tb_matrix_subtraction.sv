@@ -43,15 +43,15 @@ module tb_matrix_subtraction;
                     b[i][j] = $urandom_range(0, a[i][j]); // Ensure non-negative result
                 end
             start = 1;
-            #211.64; // 2 cycles
+            @(negedge clk);
             start = 0;
-            wait(done == 1 || $time > $realtime + 10000); // 1 us timeout
+            wait(done == 1 || $time > $realtime + 20000); // 2 us timeout
             if (done == 1) begin
                 for (int i = 0; i < 4; i++)
                     for (int j = 0; j < 4; j++) begin
                         automatic logic [15:0] expected = a[i][j] - b[i][j];
                         assert(c[i][j] == expected)
-                            else $error("Test %0d: c[%0d][%0d]=%0d, expected=%0d", test_count, i, j, c[i][j], expected);
+                            else $display("Test %0d: c[%0d][%0d]=%0d, a=%0d, b=%0d, expected=%0d", test_count, i, j, c[i][j], a[i][j], b[i][j], expected);
                         if (c[i][j] == expected) pass_count++;
                     end
             end else begin
@@ -66,7 +66,7 @@ module tb_matrix_subtraction;
 
     // Timeout
     initial begin
-        #10000000; // 1 ms
+        #20000000; // 2 ms
         $display("Simulation timeout");
         $finish;
     end

@@ -17,36 +17,37 @@ module tile_processor (
     logic [7:0] add_a [0:3][0:3], add_b [0:3][0:3];
     logic [7:0] conv_input [0:5][0:5], conv_kernel [0:2][0:2];
     logic [7:0] dot_a [0:15], dot_b [0:15];
-    logic [15:0] mul_result [0:3][0:3], add_result [0:3][0:3], sub_result [0:3][0:3], conv_result [0:3][0:3];
-    logic [31:0] dot_result; // Match matrix_dot output
+    logic [15:0] add_result [0:3][0:3], sub_result [0:3][0:3], conv_result [0:3][0:3];
+    logic [31:0] dot_result;
     logic [15:0] final_result [0:3][0:3];
-    logic mul_done, add_done, sub_done, conv_done, dot_done, op_done;
+    logic add_done, sub_done, conv_done, dot_done, op_done;
     logic [4:0] i, j, k;
 
     logic [17:0] dsp_a0 [0:4], dsp_b0 [0:4];
     logic [36:0] dsp_out [0:4];
     logic dsp_ce;
-    logic [17:0] mul_dsp_a0 [0:4], mul_dsp_b0 [0:4], conv_dsp_a0 [0:4], conv_dsp_b0 [0:4];
-    logic mul_dsp_ce, conv_dsp_ce;
+    logic [17:0] conv_dsp_a0 [0:4], conv_dsp_b0 [0:4];
+    logic conv_dsp_ce;
+    logic mul_done; // Local for op_done
 
     // Pack dot_a, dot_b into 128-bit vectors
     logic [127:0] dot_a_packed, dot_b_packed;
     genvar ga;
     generate
-        for (ga = 0; ga < 16; ga = ga + 1) begin : pack_dot_a
+        for (ga = 0; ga < 16; ga = ga + 1) begin
             assign dot_a_packed[ga*8 +: 8] = dot_a[ga];
         end
     endgenerate
     genvar gb;
     generate
-        for (gb = 0; gb < 16; gb = gb + 1) begin : pack_dot_b
+        for (gb = 0; gb < 16; gb = gb + 1) begin
             assign dot_b_packed[gb*8 +: 8] = dot_b[gb];
         end
     endgenerate
 
     genvar z;
     generate
-        for (z = 0; z < 5; z++) begin : gen_dsp
+        for (z = 0; z < 5; z++) begin
             Gowin_MULTADDALU dsp_inst (
                 .a0(dsp_a0[z]), .b0(dsp_b0[z]), .a1(18'd0), .b1(18'd0),
                 .dout(dsp_out[z]), .caso(), .ce(dsp_ce), .clk(clk), .reset(!rst_n)
@@ -54,12 +55,6 @@ module tile_processor (
         end
     endgenerate
 
-    matrix_multiplier mul_inst (
-        .clk(clk), .rst_n(rst_n), .start(op_code == MUL && state == 2),
-        .a(a_tile), .b(b_tile), .c(mul_result),
-        .dsp_a0(mul_dsp_a0), .dsp_b0(mul_dsp_b0), .dsp_out(dsp_out), .dsp_ce(mul_dsp_ce),
-        .done(mul_done)
-    );
     matrix_addition add_inst (
         .clk(clk), .rst_n(rst_n), .start(op_code == ADD && state == 2),
         .a(add_a), .b(add_b), .c(add_result), .done(add_done)
@@ -79,15 +74,25 @@ module tile_processor (
         .a(dot_a_packed), .b(dot_b_packed), .c(dot_result), .done(dot_done)
     );
 
+    // MUL done signal for op_done
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            mul_done <= 0;
+        else if (op_code == MUL && state == COMPUTE)
+            mul_done <= 1;
+        else
+            mul_done <= 0;
+    end
+
     assign op_done = mul_done || add_done || sub_done || conv_done || dot_done;
 
     always_comb begin
         case (op_code)
             MUL: begin
-                dsp_a0 = mul_dsp_a0;
-                dsp_b0 = mul_dsp_b0;
-                dsp_ce = mul_dsp_ce;
-                final_result = mul_result;
+                dsp_a0 = '{default: 0};
+                dsp_b0 = '{default: 0};
+                dsp_ce = 0;
+                final_result = '{default: 0};
             end
             CONV: begin
                 dsp_a0 = conv_dsp_a0;
