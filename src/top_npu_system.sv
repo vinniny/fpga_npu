@@ -44,7 +44,7 @@ module top_npu_system (
         .tile_i(tile_i), .tile_j(tile_j), .op_code(op_code),
         .start(cmd == 8'h02), .sram_A_dout(sram_A_dout), .sram_B_dout(sram_B_dout),
         .tp_sram_A_we(tp_sram_A_we), .tp_sram_B_we(tp_sram_B_we), .tp_sram_C_we(tp_sram_C_we),
-        .tp_sram_A_ce(tp_sram_A_ce), .tp_sram_B_ce(tp_sram_B_ce), .tp_sram_C_ce(tp_sram_C_ce),
+
         .tp_sram_A_addr(tp_sram_A_addr), .tp_sram_B_addr(tp_sram_B_addr), .tp_sram_C_addr(tp_sram_C_addr),
         .tp_sram_A_din(tp_sram_A_din), .tp_sram_B_din(tp_sram_B_din), .tp_sram_C_din(tp_sram_C_din),
         .done(done)
@@ -93,6 +93,19 @@ module top_npu_system (
         sram_A_din = spi_sram_A_we ? spi_sram_A_din : tp_sram_A_din;
         sram_B_din = spi_sram_B_we ? spi_sram_B_din : tp_sram_B_din;
         sram_C_din = spi_sram_C_we ? spi_sram_C_din : tp_sram_C_din;
+    end
+
+    // Connect tile processor outputs to SRAM C
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (~rst_n) begin
+            sram_C_we <= 0;
+            sram_C_addr <= 0;
+            sram_C_din <= 0;
+        end else begin
+            sram_C_we <= tp_sram_C_we;
+            sram_C_addr <= tp_sram_C_addr;
+            sram_C_din <= tp_sram_C_din;
+        end
     end
 
     assign data_out = sram_C_dout;
