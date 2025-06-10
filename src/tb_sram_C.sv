@@ -1,12 +1,12 @@
-`timescale 100ps/100ps
+`timescale 1ns/1ns
 
 module tb_sram_C;
-    timeunit 100ps;
-    timeprecision 100ps;
+    timeunit 1ns;
+    timeprecision 1ns;
 
-    logic sram_C_we, rpll_clk;
-    logic [7:0] sram_C_din, sram_C_dout;
-    logic [9:0] sram_C_addr;
+    logic we, ce, clk;
+    logic [7:0] din, dout;
+    logic [9:0] addr;
     integer pass_count = 0;
     integer test_count = 0;
 
@@ -14,36 +14,42 @@ module tb_sram_C;
     GSR GSR(.GSRI(1'b1));
 
     sram_C dut (
-        .sram_C_we(sram_C_we), .rpll_clk(rpll_clk), .sram_C_din(sram_C_din),
-        .sram_C_addr(sram_C_addr), .sram_C_dout(sram_C_dout)
+        .clk(clk), .ce(ce), .we(we), .addr(addr), .din(din), .dout(dout)
     );
 
     // Clock: 47.25 MHz (21.164 ns)
     initial begin
-        rpll_clk = 0;
-        forever #105.82 rpll_clk = ~rpll_clk;
+        clk = 0;
+        forever #105.82 clk = ~clk;
     end
 
     // Test procedure
     initial begin
-        $display("Starting sram_C test with 1000 test cases");
-        sram_C_we = 0; sram_C_din = 8'h00; sram_C_addr = 10'd0;
+        $display("Starting sram_A test with 1000 test cases");
+        ce = 0; we = 0; din = 8'h00; addr = 10'd0;
         #1000; // 100 ns reset
 
+        // Check initialization
+        ce = 1; we = 0; addr = 10'd0;
+        #211.64;
+        assert(dout == 8'h00) else $error("Init check failed: dout=%h, expected=00", dout);
+        ce = 0;
+
         repeat(1000) begin
-            @(negedge rpll_clk);
+            @(negedge clk);
             // Random write
-            sram_C_we = 1;
-            sram_C_din = $urandom_range(0, 255);
-            sram_C_addr = $urandom_range(0, 1023);
+            ce = 1; we = 1;
+            din = $urandom_range(0, 255);
+            addr = $urandom_range(0, 1023);
             #211.64; // 2 cycles
-            sram_C_we = 0;
+            we = 0;
             // Read back
             #211.64;
-            assert(sram_C_dout == sram_C_din)
-                else $error("Test %0d: addr=%0d, read=%h, expected=%h", test_count, sram_C_addr, sram_C_dout, sram_C_din);
-            if (sram_C_dout == sram_C_din) pass_count++;
+            assert(dout == din)
+                else $error("Test %0d: addr=%0d, read=%h, expected=%h", test_count, addr, dout, din);
+            if (dout == din) pass_count++;
             test_count++;
+            ce = 0;
             #1000; // 100 ns between tests
         end
         $display("Test completed: %0d/1000 passed", pass_count);

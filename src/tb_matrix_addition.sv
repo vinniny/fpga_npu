@@ -1,8 +1,8 @@
-`timescale 100ps/100ps
+`timescale 1ns/1ns
 
 module tb_matrix_addition;
-    timeunit 100ps;
-    timeprecision 100ps;
+    timeunit 1ns;
+    timeprecision 1ns;
 
     logic clk, rst_n, start, done;
     logic [7:0] a [0:3][0:3], b [0:3][0:3];

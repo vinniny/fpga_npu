@@ -20,6 +20,9 @@ entity tile_processor is
         tp_sram_A_we    : out    vl_logic;
         tp_sram_B_we    : out    vl_logic;
         tp_sram_C_we    : out    vl_logic;
+        tp_sram_A_ce    : out    vl_logic;
+        tp_sram_B_ce    : out    vl_logic;
+        tp_sram_C_ce    : out    vl_logic;
         tp_sram_A_addr  : out    vl_logic_vector(9 downto 0);
         tp_sram_B_addr  : out    vl_logic_vector(9 downto 0);
         tp_sram_C_addr  : out    vl_logic_vector(9 downto 0);

@@ -5,7 +5,7 @@ module spi_slave (
     output logic [2:0] tile_i, tile_j,
     output logic [2:0] op_code,
     output logic [7:0] data_in,
-    input logic [7:0] data_out,
+    input  logic [7:0] data_out,
     output logic valid
 );
     typedef enum logic [1:0] {IDLE, RECEIVE, TRANSFER} state_t;
@@ -13,16 +13,15 @@ module spi_slave (
 
     logic [23:0] shift_reg;
     logic [4:0] bit_cnt;
+    logic [3:0] miso_bit_cnt;
     logic [7:0] data_out_reg, data_out_sync1, data_out_sync2;
-    logic valid_sclk, valid_sync1, valid_sync2, valid_ack_sclk, valid_ack_sync1, valid_ack_sync2;
-    logic [23:0] data_to_sync;
-    logic [2:0] sync_bit_cnt;
-    logic [1:0] transfer_timeout; // 2-bit for 20 ns timeout
+    logic [7:0] miso_shift_reg;
+    logic [5:0] transfer_timeout;
 
-    // Data_out synchronization: clk to sclk
+    // Synchronize data_out to sclk domain
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n)
-            data_out_reg <= 0;
+            data_out_reg <= 8'h00;
         else
             data_out_reg <= data_out;
     end
@@ -37,7 +36,7 @@ module spi_slave (
         end
     end
 
-    // State machine: sclk domain
+    // State transition
     always_ff @(posedge sclk or posedge cs_n) begin
         if (cs_n)
             state <= IDLE;
@@ -48,89 +47,87 @@ module spi_slave (
     always_comb begin
         next_state = state;
         case (state)
-            IDLE: if (!cs_n) next_state = RECEIVE;
-            RECEIVE: if (bit_cnt == 23) next_state = TRANSFER;
-            TRANSFER: if (valid_ack_sclk || transfer_timeout == 1 || cs_n) next_state = IDLE; // 20 ns timeout
+            IDLE:    if (!cs_n) next_state = RECEIVE;
+            RECEIVE: if (bit_cnt >= 23 && !cs_n) next_state = TRANSFER;
+            TRANSFER: if (miso_bit_cnt >= 8 || transfer_timeout >= 32 || cs_n) next_state = IDLE;
         endcase
     end
 
-    // SPI input processing
-    always_ff @(posedge sclk or posedge cs_n) begin
+    // SPI reception and FSM actions
+    always_ff @(negedge sclk or posedge cs_n) begin
         if (cs_n) begin
             bit_cnt <= 0;
             shift_reg <= 0;
-            valid_sclk <= 0;
-            transfer_timeout <= 0;
+            valid <= 0;
+            cmd <= 0;
+            tile_i <= 0;
+            tile_j <= 0;
+            op_code <= 0;
+            data_in <= 0;
         end else begin
             case (state)
-                IDLE: begin
-                    bit_cnt <= 0;
-                    transfer_timeout <= 0;
-                end
                 RECEIVE: begin
-                    shift_reg <= {shift_reg[22:0], mosi};
+                    shift_reg <= {mosi, shift_reg[23:1]}; // Right-shift for MSB-first
                     bit_cnt <= bit_cnt + 1;
-                    if (bit_cnt == 23) begin
-                        data_to_sync <= {shift_reg[22:0], mosi};
-                        valid_sclk <= 1;
+                    if (bit_cnt == 23) begin // Capture at 24th bit
+                        cmd     <= shift_reg[22:15]; // 8-bit cmd
+                        tile_i  <= shift_reg[14:12];
+                        tile_j  <= shift_reg[11:9];
+                        op_code <= shift_reg[8:6];
+                        data_in <= {shift_reg[6:0], mosi}; // 8-bit data
+                        valid   <= 1'b1;
+                        $display("RECEIVED full 24 bits: cmd=%h, tile_i=%0d, tile_j=%0d, op_code=%0d, data_in=%h, time=%0t",
+                                 shift_reg[22:15], shift_reg[14:12], shift_reg[11:9], shift_reg[8:6], {shift_reg[6:0], mosi}, $time);
+                    end else begin
+                        valid <= (bit_cnt == 23) ? 1'b1 : 1'b0;
                     end
                 end
                 TRANSFER: begin
-                    transfer_timeout <= transfer_timeout + 1;
-                    if (valid_ack_sclk || transfer_timeout == 1) begin
-                        valid_sclk <= 0;
-                        bit_cnt <= 0; // Reset for MISO
-                    end
+                    if (miso_bit_cnt == 7)
+                        valid <= 1'b0; // Clear valid after full transfer
+                end
+                default: begin
+                    valid <= 1'b0;
                 end
             endcase
         end
     end
 
-    // MISO output
-    always_ff @(posedge sclk or posedge cs_n) begin
-        if (cs_n)
-            miso <= 0;
-        else if (bit_cnt >= 0 && bit_cnt < 8) // MISO at bit_cnt=0 to 7
-            miso <= data_out_sync2[7 - bit_cnt];
-    end
-
-    // Synchronization: sclk to clk
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            valid_sync1 <= 0;
-            valid_sync2 <= 0;
-            valid_ack_sync1 <= 0;
-            valid_ack_sync2 <= 0;
-            cmd <= 0; tile_i <= 0; tile_j <= 0; op_code <= 0; data_in <= 0;
-            valid <= 0;
-            sync_bit_cnt <= 0;
+    // MISO shifting
+    always_ff @(negedge sclk or posedge cs_n) begin
+        if (cs_n) begin
+            miso_shift_reg <= 8'h00;
+            miso_bit_cnt <= 0;
+            miso <= 1'b0;
+            transfer_timeout <= 0;
         end else begin
-            valid_sync1 <= valid_sclk;
-            valid_sync2 <= valid_sync1;
-            valid <= valid_sync2 && !valid_ack_sync2;
-            valid_ack_sync1 <= valid_sync2;
-            valid_ack_sync2 <= valid_ack_sync1;
-            if (valid_sync2 && !valid_ack_sync2) begin
-                sync_bit_cnt <= sync_bit_cnt + 1;
-                case (sync_bit_cnt)
-                    0: cmd <= data_to_sync[23:16];
-                    1: tile_i <= data_to_sync[15:13];
-                    2: tile_j <= data_to_sync[12:10];
-                    3: op_code <= data_to_sync[9:7];
-                    4: begin
-                        data_in <= data_to_sync[7:0];
-                        sync_bit_cnt <= 0;
+            case (state)
+                TRANSFER: begin
+                    if (miso_bit_cnt == 0) begin
+                        miso_shift_reg <= data_out_sync2;
+                        $display("TRANSFER INIT: loading miso_shift_reg = %h, time=%0t", data_out_sync2, $time);
                     end
-                endcase
-            end
+                    
+                    miso <= miso_shift_reg[7 - miso_bit_cnt]; // MSB-first
+                    $display("TRANSFER STATE: miso <= %b from %h, bit_cnt=%0d, time=%0t",
+                             miso_shift_reg[7 - miso_bit_cnt], miso_shift_reg, miso_bit_cnt, $time);
+                    
+                    miso_bit_cnt <= miso_bit_cnt + 1;
+                    if (miso_bit_cnt == 7)
+                        miso_bit_cnt <= 0;
+                    transfer_timeout <= transfer_timeout + 1;
+                end
+                RECEIVE: if (bit_cnt == 23) begin
+                    miso_bit_cnt <= 0;
+                    miso_shift_reg <= 8'h00;
+                    miso <= 1'b0;
+                    transfer_timeout <= 0;
+                end
+                default: begin
+                    miso <= 1'b0;
+                    transfer_timeout <= 0;
+                end
+            endcase
         end
-    end
-
-    // Acknowledge: clk to sclk
-    always_ff @(posedge sclk or negedge rst_n) begin
-        if (!rst_n)
-            valid_ack_sclk <= 0;
-        else
-            valid_ack_sclk <= valid_ack_sync2;
     end
 endmodule

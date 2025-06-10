@@ -21,10 +21,3 @@ IO_LOC "rst_n" 38;
 IO_PORT "rst_n" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
 IO_LOC "clk" 35;
 IO_PORT "clk" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
-
-# DSP placement
-INS_LOC "npu_inst/tp_inst/gen_dsp[0].dsp_inst/multaddalu18x18_inst" DSP_R19[0][A];
-INS_LOC "npu_inst/tp_inst/gen_dsp[1].dsp_inst/multaddalu18x18_inst" DSP_R19[1][A];
-INS_LOC "npu_inst/tp_inst/gen_dsp[2].dsp_inst/multaddalu18x18_inst" DSP_R19[2][A];
-INS_LOC "npu_inst/tp_inst/gen_dsp[3].dsp_inst/multaddalu18x18_inst" DSP_R19[3][A];
-INS_LOC "npu_inst/tp_inst/gen_dsp[4].dsp_inst/multaddalu18x18_inst" DSP_R19[4][A];

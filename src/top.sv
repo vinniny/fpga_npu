@@ -2,18 +2,16 @@ module top (
     input logic clk, rst_n, sclk, mosi, cs_n,
     output logic miso, done
 );
-    logic rpll_clk /* synthesis syn_keep=1 */; // 47.25 MHz clock
-    logic pll_lock; // PLL lock signal
-    logic rpll_clk_reg /* synthesis syn_keep=1 */; // Dummy register
+    logic rpll_clk /* synthesis syn_keep=1 */;
+    logic pll_lock;
+    logic rpll_clk_reg /* synthesis syn_keep=1 */;
 
-    // Instantiate rPLL for 27 MHz to 47.25 MHz
     Gowin_rPLL pll_inst (
         .clkout(rpll_clk),
         .lock(pll_lock),
         .clkin(clk)
     );
 
-    // Dummy register to preserve rpll_clk
     always_ff @(posedge rpll_clk or negedge rst_n) begin
         if (!rst_n)
             rpll_clk_reg <= 0;
@@ -21,7 +19,6 @@ module top (
             rpll_clk_reg <= 1;
     end
 
-    // Synchronize reset with PLL lock
     logic rst_n_sync;
     always_ff @(posedge rpll_clk or negedge rst_n) begin
         if (!rst_n)

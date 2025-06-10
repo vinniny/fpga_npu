@@ -17,7 +17,7 @@ Z9 L0 557
 Z10 OV;L;10.1d;51
 r1
 31
-Z11 !s108 1748491520.514000
+Z11 !s108 1749097804.870000
 Z12 !s107 C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_tsim.v|
 Z13 !s90 -reportprogress|300|-work|work|-sv|C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_tsim.v|
 Z14 o-work work -sv -O0
@@ -66,7 +66,7 @@ Z29 L0 14641
 R10
 r1
 31
-Z30 !s108 1748491519.482000
+Z30 !s108 1749097803.748000
 Z31 !s107 C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_sim.v|
 Z32 !s90 -reportprogress|300|-work|work|-sv|C:/Gowin/Gowin_V1.9.11.02_x64/IDE/simlib/gw1n/prim_sim.v|
 R14
@@ -1626,7 +1626,7 @@ Z357 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA project
 R14
 R15
 Z358 n@gowin_@m@u@l@t@a@d@d@a@l@u
-Z359 !s108 1748491519.395000
+Z359 !s108 1749097803.667000
 Z360 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_multaddalu/gowin_multaddalu.v|
 !i10b 1
 !s85 0
@@ -1650,7 +1650,7 @@ Z368 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA project
 R14
 R15
 Z369 n@gowin_r@p@l@l
-Z370 !s108 1748491519.440000
+Z370 !s108 1749097803.707000
 Z371 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/gowin_rpll/gowin_rpll.v|
 !i10b 1
 !s85 0
@@ -2296,7 +2296,7 @@ R10
 r1
 !s85 0
 31
-!s108 1748491522.905000
+!s108 1749097807.578000
 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_addition.sv|
 Z509 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_addition.sv|
 !s101 -O0
@@ -2320,7 +2320,7 @@ r1
 Z517 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv|
 R14
 R15
-Z518 !s108 1748491518.517000
+Z518 !s108 1749097802.571000
 Z519 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_convolution.sv|
 !i10b 1
 !s85 0
@@ -2343,7 +2343,7 @@ r1
 Z526 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv|
 R14
 R15
-Z527 !s108 1748491522.809000
+Z527 !s108 1749097807.492000
 Z528 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_dot.sv|
 !i10b 1
 !s85 0
@@ -2366,7 +2366,7 @@ r1
 Z536 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_subtraction.sv|
 R14
 R15
-Z537 !s108 1748491518.564000
+Z537 !s108 1749097802.650000
 Z538 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/matrix_subtraction.sv|
 !i10b 1
 !s85 0
@@ -3907,23 +3907,23 @@ Z851 !s100 oYdWCV1ME^0lk^n@F0<9?2
 !s101 -O0
 vspi_slave
 R1
-Z852 IG=gRWFGXIeaL`k52z7VWU1
-Z853 VS2MPC8h8^QnYzW5J4KFlE1
-Z854 !s105 spi_slave_sv_unit
+Z852 !s100 Nnhc0]4`YzUSHKkTJZY=O2
+Z853 Idh2:m7Hb?SM7DkJeAg[3k2
+Z854 VS2MPC8h8^QnYzW5J4KFlE1
+Z855 !s105 spi_slave_sv_unit
 S1
 R5
-Z855 w1748491502
-Z856 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv
-Z857 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv
+Z856 w1749087339
+Z857 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv
+Z858 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv
 L0 1
 R10
 r1
 31
-Z858 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv|
+Z859 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv|
 R14
 R15
-Z859 !s100 H0iN37AWE3hWH76[Go84;2
-Z860 !s108 1748491518.607000
+Z860 !s108 1749097802.700000
 Z861 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/spi_slave.sv|
 !i10b 1
 !s85 0
@@ -3984,7 +3984,7 @@ Z874 VEU]Z3MaWokP?`N<7AInWn2
 Z875 !s105 sram_A_sv_unit
 S1
 R5
-Z876 w1748335016
+Z876 w1749031637
 Z877 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv
 Z878 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv
 L0 1
@@ -3995,7 +3995,7 @@ Z879 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA project
 R14
 R15
 Z880 nsram_@a
-Z881 !s108 1748491518.651000
+Z881 !s108 1749097802.748000
 Z882 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_A.sv|
 !i10b 1
 !s85 0
@@ -4019,7 +4019,7 @@ Z890 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA project
 R14
 R15
 Z891 nsram_@b
-Z892 !s108 1748491518.694000
+Z892 !s108 1749097802.791000
 Z893 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_B.sv|
 !i10b 1
 !s85 0
@@ -4043,43 +4043,43 @@ Z901 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA project
 R14
 R15
 Z902 nsram_@c
-Z903 !s108 1748491518.736000
+Z903 !s108 1749097802.832000
 Z904 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/sram_C.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_gowin_multaddalu
 R1
-Z905 !s100 ?biF`dmPX:ml@ge3hj`b=0
-Z906 IhCCgS`m7iI;[9MhAamGfl0
+Z905 !s100 `^5:nZ4ZV5XMdD61UQjk13
+Z906 IRd?2aZY`]ImVWS9V8bO8K1
 Z907 Vncl:nXnJZH[o4HcCfn`6c0
 Z908 !s105 tb_gowin_multaddalu_sv_unit
 S1
 R5
-Z909 w1748248289
-Z910 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_multaddalu.sv
-Z911 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_multaddalu.sv
+Z909 w1749094500
+Z910 8C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_gowin_multaddalu.sv
+Z911 FC:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_gowin_multaddalu.sv
 L0 3
 R10
 r1
 31
-Z912 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_multaddalu.sv|
+Z912 !s90 -reportprogress|300|-work|work|-sv|C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_gowin_multaddalu.sv|
 R14
 R15
-Z913 !s108 1748491518.778000
-Z914 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_multaddalu.sv|
+Z913 !s108 1749097802.872000
+Z914 !s107 C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_gowin_multaddalu.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_gowin_rpll
 R1
-Z915 !s100 57TZY6:FR5Eg13;;XFhiZ1
-Z916 I2NRj5b2E8`Zcg]RLC8ZD;0
+Z915 !s100 >Mc;a8d?3OXla]lB21=0z1
+Z916 If<BEBzS]BZl4>LF0P>WZc0
 Z917 Vi_O>7M=mRCiL68`h:1k^X1
 Z918 !s105 tb_gowin_rpll_sv_unit
 S1
 R5
-Z919 w1748246996
+Z919 w1749094604
 Z920 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_rpll.sv
 Z921 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_rpll.sv
 L0 3
@@ -4089,20 +4089,20 @@ r1
 Z922 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_rpll.sv|
 R14
 R15
-Z923 !s108 1748491518.823000
+Z923 !s108 1749097802.933000
 Z924 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_gowin_rpll.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_matrix_addition
 R1
-Z925 !s100 z8QRVad:89`jJYLd>@Ake3
-Z926 Ib8VfdACz>P1z<NDn]F<@U2
+Z925 !s100 i^OQi60z]a1hV@L^XAVe83
+Z926 IL6ED?<kgDLOLCg9U6o3Y83
 Z927 VmoDHGje9:=mTzhdK]A^ea1
 Z928 !s105 tb_matrix_addition_sv_unit
 S1
 R5
-Z929 w1748248910
+Z929 w1749094590
 Z930 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_addition.sv
 Z931 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_addition.sv
 L0 3
@@ -4112,20 +4112,20 @@ r1
 Z932 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_addition.sv|
 R14
 R15
-Z933 !s108 1748491518.871000
+Z933 !s108 1749097802.990000
 Z934 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_addition.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_matrix_convolution_debug
 R1
-Z935 !s100 =@ZIHkY2Ca@[UC@h`id813
-Z936 Ib<6?Lj3EQOR_`z<<;TVm;0
+Z935 !s100 `]3C3>zz6eZgeUE1OEMET1
+Z936 IUDF3mZ8AjDbC2Mj4XRJ1[3
 Z937 V9VFOcNdFT6KJSSf[OgmKH1
 Z938 !s105 tb_matrix_convolution_debug_sv_unit
 S1
 R5
-Z939 w1748349612
+Z939 w1749094574
 Z940 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_convolution_debug.sv
 Z941 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_convolution_debug.sv
 L0 3
@@ -4135,43 +4135,43 @@ r1
 Z942 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_convolution_debug.sv|
 R14
 R15
-Z943 !s108 1748491522.757000
+Z943 !s108 1749097807.433000
 Z944 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_convolution_debug.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_matrix_dot
 R1
-Z945 !s100 Rjff9V<RoR[Id3`g8`7hh2
-Z946 IR<000ZEFdaoZnbY3noa3c1
+Z945 !s100 @bf44=9NeU4l@WS;L=mJW1
+Z946 IidCVjHJ3Nf94cJ4kLjcHH0
 Z947 V]YbClQ;>[K6b83Jg3JS[Y3
 Z948 !s105 tb_matrix_dot_sv_unit
 S1
 R5
-Z949 w1748446667
-Z950 8C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_dot.sv
-Z951 FC:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_dot.sv
+Z949 w1749094561
+Z950 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_dot.sv
+Z951 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_dot.sv
 L0 3
 R10
 r1
 31
-Z952 !s90 -reportprogress|300|-work|work|-sv|C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_dot.sv|
+Z952 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_dot.sv|
 R14
 R15
-Z953 !s108 1748491518.914000
-Z954 !s107 C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_matrix_dot.sv|
+Z953 !s108 1749097803.047000
+Z954 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_dot.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_matrix_subtraction
 R1
-Z955 !s100 zL@^=K`932W4XfHQn[Vko1
-Z956 I4h6WR]>hkbczIGIjHl8IK3
+Z955 !s100 b1ccMbdDjo9h6]MRYCUCQ0
+Z956 Ic4M8^2;3>cM^o9lI;WRa03
 Z957 V?Uo4:]7N_SLcPR0?Pf;7O0
 Z958 !s105 tb_matrix_subtraction_sv_unit
 S1
 R5
-Z959 w1748488878
+Z959 w1749094536
 Z960 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_subtraction.sv
 Z961 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_subtraction.sv
 L0 3
@@ -4181,43 +4181,43 @@ r1
 Z962 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_subtraction.sv|
 R14
 R15
-Z963 !s108 1748491518.959000
+Z963 !s108 1749097803.110000
 Z964 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_matrix_subtraction.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_spi_slave
 R1
-Z965 Imnn_Xc]XHoTH@e924=Emz2
-Z966 V^OKAC>caC0f<8e_ZR<LSR3
-Z967 !s105 tb_spi_slave_sv_unit
+Z965 !s100 HZNb9C][2]7Vkn2DS<JM@0
+Z966 IG<b3G[mBQUL46a;=8TDT72
+Z967 V^OKAC>caC0f<8e_ZR<LSR3
+Z968 !s105 tb_spi_slave_sv_unit
 S1
 R5
-Z968 w1748491492
-Z969 8C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_spi_slave.sv
-Z970 FC:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_spi_slave.sv
+Z969 w1749094523
+Z970 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_spi_slave.sv
+Z971 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_spi_slave.sv
 L0 3
 R10
 r1
 31
-Z971 !s90 -reportprogress|300|-work|work|-sv|C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_spi_slave.sv|
+Z972 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_spi_slave.sv|
 R14
 R15
-Z972 !s100 f8zOTidL0lJ^F;n]Pgoel2
-Z973 !s108 1748491519.002000
-Z974 !s107 C:\Users\thanh\Desktop\FPGA projects\Demo4\fpga_npu\src\tb_spi_slave.sv|
+Z973 !s108 1749097803.168000
+Z974 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_spi_slave.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_sram_A
 R1
-Z975 !s100 1<MHjnb9O74[6V>kjj@Y10
-Z976 I]3KOPO<iAMMgHULSNXdG_3
+Z975 !s100 SgIj`mH;<kjUB66DN:OZQ1
+Z976 I^IXC[M>26j5z18lSEi]eP2
 Z977 V7Ti7C1B<>nKD4hS=XHZIT3
 Z978 !s105 tb_sram_A_sv_unit
 S1
 R5
-Z979 w1748246328
+Z979 w1749029570
 Z980 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_A.sv
 Z981 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_A.sv
 L0 3
@@ -4228,20 +4228,20 @@ Z982 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA project
 R14
 R15
 Z983 ntb_sram_@a
-Z984 !s108 1748491519.045000
+Z984 !s108 1749097803.225000
 Z985 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_A.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_sram_B
 R1
-Z986 !s100 F;SPH8<dB:6J^cX3DQd012
-Z987 I=3alP=RK8IiI9RXLT;:_h3
+Z986 !s100 NLa^nI4>GSZR2^o[B=cT`0
+Z987 INeoAKA>BznWR_<dXRhoFI0
 Z988 V__WkIh5FfCSEQUP^B32`03
 Z989 !s105 tb_sram_B_sv_unit
 S1
 R5
-Z990 w1748246351
+Z990 w1749032178
 Z991 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_B.sv
 Z992 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_B.sv
 L0 3
@@ -4252,20 +4252,20 @@ Z993 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA project
 R14
 R15
 Z994 ntb_sram_@b
-Z995 !s108 1748491519.090000
+Z995 !s108 1749097803.283000
 Z996 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_B.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_sram_C
 R1
-Z997 !s100 42gMjW3QaEGzEO1KKZ[Em1
-Z998 I<CKfainH1doSI<<g@EnC@2
+Z997 !s100 c^S5D>@BILdWM3MKW5kS>1
+Z998 I@zmf>LJA]4h5gUiZ?emWl0
 Z999 V_GQeaBL5l_=B6hibP]UWn3
 Z1000 !s105 tb_sram_C_sv_unit
 S1
 R5
-Z1001 w1748246398
+Z1001 w1749032184
 Z1002 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_C.sv
 Z1003 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_C.sv
 L0 3
@@ -4276,20 +4276,20 @@ Z1004 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projec
 R14
 R15
 Z1005 ntb_sram_@c
-Z1006 !s108 1748491519.133000
+Z1006 !s108 1749097803.337000
 Z1007 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_sram_C.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_tile_processor
 R1
-Z1008 !s100 ilKV791BcKf>1LbgBYoc50
-Z1009 Ic8o3>Z?DgUK7bmRAA?dCm1
+Z1008 !s100 <1?<@RY]^Fh`Yj8IB?im72
+Z1009 I:m;mVYdGG<MGAfc[lh[_D0
 Z1010 V^N;?YNE`_c?J51;_`U>F81
 Z1011 !s105 tb_tile_processor_sv_unit
 S1
 R5
-Z1012 w1748247025
+Z1012 w1749091804
 Z1013 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_tile_processor.sv
 Z1014 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_tile_processor.sv
 L0 3
@@ -4299,20 +4299,20 @@ r1
 Z1015 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_tile_processor.sv|
 R14
 R15
-Z1016 !s108 1748491519.176000
+Z1016 !s108 1749097803.394000
 Z1017 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_tile_processor.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_top
 R1
-Z1018 !s100 a`MNj]ioW8=zFEaMPaYAZ3
-Z1019 IIENGDLhA3H[><f<2dz5>g2
+Z1018 !s100 =_hSQV`=Ml^gX3n1fIM5<2
+Z1019 IS^z?LE=4O2>@ol6ghVXUS2
 Z1020 V[LcaLh[SJXomY3Ki^RaI?1
 Z1021 !s105 tb_top_sv_unit
 S1
 R5
-Z1022 w1748247017
+Z1022 w1749087080
 Z1023 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top.sv
 Z1024 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top.sv
 L0 3
@@ -4322,20 +4322,20 @@ r1
 Z1025 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top.sv|
 R14
 R15
-Z1026 !s108 1748491519.220000
+Z1026 !s108 1749097803.462000
 Z1027 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtb_top_npu_system
 R1
-Z1028 !s100 KAnWC5E<RIlB?^3NeR;XD0
-Z1029 I`Dd=T:U1h2FFY@W];fgnY1
+Z1028 !s100 RXD;9P`0QLRd1]^VG3WKR2
+Z1029 IX0d1UPi]G>1G^ToB8>DhH0
 Z1030 V4@GG4fBiOY?GmiXk5aFF01
 Z1031 !s105 tb_top_npu_system_sv_unit
 S1
 R5
-Z1032 w1748247011
+Z1032 w1749089026
 Z1033 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top_npu_system.sv
 Z1034 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top_npu_system.sv
 L0 3
@@ -4345,7 +4345,7 @@ r1
 Z1035 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top_npu_system.sv|
 R14
 R15
-Z1036 !s108 1748491519.263000
+Z1036 !s108 1749097803.526000
 Z1037 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tb_top_npu_system.sv|
 !i10b 1
 !s85 0
@@ -4376,25 +4376,25 @@ Z1042 !s100 N<2S`M@k@ebZhY_0Rn`L21
 !s101 -O0
 vtile_processor
 R1
-Z1043 !s100 S7I`z36faEOXhf@DBz=jO3
-Z1044 ITl5`SaKnSD[iV1HbQ7>Xa0
-Z1045 Vf3VVIMc3d=Rf;]aQlP5]R0
-Z1046 !s105 tile_processor_sv_unit
+Z1043 I8B]QakPVETL95:ln0FYXD1
+Z1044 VJ`96LBZ>eAl[_0Tig1nIB0
+Z1045 !s105 tile_processor_sv_unit
 S1
 R5
-Z1047 w1748488146
-Z1048 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv
-Z1049 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv
-L0 2
+Z1046 w1749096467
+Z1047 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv
+Z1048 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv
+L0 1
 R10
 r1
 31
-Z1050 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv|
+Z1049 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv|
 R14
 R15
 !i10b 1
+Z1050 !s100 W_YY2Uf3hK4D6PR32DCez0
 !s85 0
-Z1051 !s108 1748491522.857000
+Z1051 !s108 1749097807.533000
 Z1052 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/tile_processor.sv|
 !s101 -O0
 vTLVDS_IBUF
@@ -4519,13 +4519,13 @@ Z1077 !s100 Eg_H^joT7@N[:JAoT4cdM0
 !s101 -O0
 vtop
 R1
-Z1078 !s100 a]Mm02kLOg?h_z?cO^]bD3
-Z1079 I<PPa3@=EI0j]cKk8kd:7o1
+Z1078 !s100 iH5UA2B0gA0BPi2YJbcQa0
+Z1079 IZ=JJ9Ple7PJS5bfKF@6ZQ0
 Z1080 Va<bCLgZ1;0LbVR@U`?k`K2
 Z1081 !s105 top_sv_unit
 S1
 R5
-Z1082 w1748084126
+Z1082 w1749083652
 Z1083 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv
 Z1084 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv
 L0 1
@@ -4535,45 +4535,45 @@ r1
 Z1085 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv|
 R14
 R15
-Z1086 !s108 1748491519.306000
+Z1086 !s108 1749097803.583000
 Z1087 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vtop_npu_system
 R1
-Z1088 !s100 PWnQ2lKH?W[NliG2jHOTn1
-Z1089 IG`@Ugo=;lU2CRz?hNPkXK3
+Z1088 !s100 5>OeAafNfWXVeeJ1n_fAA1
+Z1089 I=049QoZ;de>85U6LEe=z53
 Z1090 V>T[<M7Z^5SaQ@KG?T;Y`03
 Z1091 !s105 top_npu_system_sv_unit
 S1
 R5
-R514
-Z1092 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv
-Z1093 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv
+Z1092 w1749084289
+Z1093 8C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv
+Z1094 FC:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv
 L0 1
 R10
 r1
 31
-Z1094 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv|
+Z1095 !s90 -reportprogress|300|-work|work|-sv|C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv|
 R14
 R15
-Z1095 !s108 1748491519.349000
-Z1096 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv|
+Z1096 !s108 1749097803.626000
+Z1097 !s107 C:/Users/thanh/Desktop/FPGA projects/Demo4/fpga_npu/src/top_npu_system.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vVCC
 R1
-Z1097 Iz8ILzC[I6_Llbf:kH>24>2
-Z1098 VXPN[N93BSa]Y]SZMLdB_51
+Z1098 Iz8ILzC[I6_Llbf:kH>24>2
+Z1099 VXPN[N93BSa]Y]SZMLdB_51
 R4
 S1
 R5
 R6
 R7
 R8
-Z1099 L0 13970
+Z1100 L0 13970
 R10
 r1
 31
@@ -4582,8 +4582,8 @@ R12
 R13
 R14
 R15
-Z1100 n@v@c@c
-Z1101 !s100 kE^daho4z85[4[_]aSd0`3
+Z1101 n@v@c@c
+Z1102 !s100 kE^daho4z85[4[_]aSd0`3
 !i10b 1
 !s85 0
 !s101 -O0

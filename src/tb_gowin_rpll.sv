@@ -1,8 +1,8 @@
-`timescale 100ps/100ps
+`timescale 1ns/1ns
 
 module tb_gowin_rpll;
-    timeunit 100ps;
-    timeprecision 100ps;
+    timeunit 1ns;
+    timeprecision 1ns;
 
     reg clkin;
     wire clkout, lock;

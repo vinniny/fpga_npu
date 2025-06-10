@@ -1,8 +1,8 @@
-`timescale 100ps/100ps
+`timescale 1ns/1ns
 
 module tb_matrix_convolution_debug;
-    timeunit 100ps;
-    timeprecision 100ps;
+    timeunit 1ns;
+    timeprecision 1ns;
 
     // Signals
     logic clk, rst_n, start;

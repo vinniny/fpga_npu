@@ -1,8 +1,8 @@
-`timescale 100ps/100ps
+`timescale 1ns/1ns
 
 module tb_matrix_dot;
-    timeunit 100ps;
-    timeprecision 100ps;
+    timeunit 1ns;
+    timeprecision 1ns;
 
     logic clk, rst_n, start;
     logic [127:0] a, b; // Packed 128-bit

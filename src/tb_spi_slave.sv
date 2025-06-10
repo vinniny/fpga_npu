@@ -1,8 +1,8 @@
-`timescale 100ps/100ps
+`timescale 1ns/1ns
 
 module tb_spi_slave;
-    timeunit 100ps;
-    timeprecision 100ps;
+    timeunit 1ns;
+    timeprecision 1ns;
 
     reg sclk, mosi, cs_n, clk, rst_n;
     wire miso;
@@ -61,6 +61,9 @@ module tb_spi_slave;
                 mosi = spi_data[i];
                 @(negedge sclk);
             end
+
+            repeat(16) @(negedge sclk);  // Allow MISO transmission
+
             // Wait for valid
             wait(valid == 1 || $time > $realtime + 120000); // 12 us timeout
             if (valid == 1) begin
@@ -69,12 +72,12 @@ module tb_spi_slave;
                     op_code == exp_op_code && data_in == exp_data_in) begin
                     pass_count = pass_count + 1;
                 end else begin
-                    $display("Test %0d: cmd=%h, tile_i=%h, tile_j=%h, op_code=%h, data_in=%h; expected %h, %h, %h, %h, %h; bit_cnt=%0d, state=%s, valid_sclk=%b, valid_sync2=%b",
+                    $display("Test %0d: cmd=%h, tile_i=%h, tile_j=%h, op_code=%h, data_in=%h; expected %h, %h, %h, %h, %h",
                              test_count, cmd, tile_i, tile_j, op_code, data_in,
-                             exp_cmd, exp_tile_i, exp_tile_j, exp_op_code, exp_data_in, dut.bit_cnt, dut.state.name, dut.valid_sclk, dut.valid_sync2);
+                             exp_cmd, exp_tile_i, exp_tile_j, exp_op_code, exp_data_in);
                 end
-                // Wait for MISO transmission (bit_cnt=0)
-                repeat(3) @(negedge sclk); // Wait for TRANSFER exit
+                // Wait for MISO transmission
+                repeat(35) @(negedge sclk); // Wait 35 cycles
                 received_data = 8'h00;
                 for (i = 7; i >= 0; i = i - 1) begin
                     @(posedge sclk);
@@ -83,12 +86,11 @@ module tb_spi_slave;
                 if (received_data == data_out) begin
                     pass_count = pass_count + 1;
                 end else begin
-                    $display("Test %0d: miso received=%h, expected=%h; bit_cnt=%0d, state=%s, data_out_sync2=%h",
-                             test_count, received_data, data_out, dut.bit_cnt, dut.state.name, dut.data_out_sync2);
+                    $display("Test %0d: miso received=%h, expected=%h; data_out_sync2=%h",
+                             test_count, received_data, data_out, dut.data_out_sync2);
                 end
             end else begin
-                $display("Test %0d: Failed to receive valid; bit_cnt=%0d, state=%s, valid_sclk=%b, valid_sync2=%b",
-                         test_count, dut.bit_cnt, dut.state.name, dut.valid_sclk, dut.valid_sync2);
+                $display("Test %0d: Failed to receive valid", test_count);
             end
             cs_n = 1;
             #6000; // 600 ns cs_n high
